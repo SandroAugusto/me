@@ -360,6 +360,31 @@ h3 {
   color: var(--muted);
 }
 
+/* Education */
+.degrees {
+  display: grid;
+}
+
+.degree {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.degree:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.degree p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
 /* Cards */
 .card {
   background: var(--panel);
@@ -457,7 +482,7 @@ h3 {
   }
 
   .skills-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .projects-grid {

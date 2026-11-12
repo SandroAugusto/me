@@ -26,17 +26,15 @@ function RoleItem({ role }: { role: Role }) {
           {role.company}
           {role.context ? <span className="role-context"> · {role.context}</span> : null}
         </h3>
-        {role.period ? <span className="role-period mono">{role.period}</span> : null}
+        <span className="role-period mono">{role.period}</span>
       </div>
-      {role.title ? <p className="role-title">{role.title}</p> : null}
+      <p className="role-title">{role.title}</p>
       <p className="role-summary">{role.summary}</p>
-      {role.highlights ? (
-        <ul className="role-highlights">
-          {role.highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      ) : null}
+      <ul className="role-highlights">
+        {role.highlights.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
       {role.stack ? (
         <ul className="tags mono">
           {role.stack.map((item) => (
@@ -143,6 +141,23 @@ export function Site({ locale }: { locale: Locale }) {
               <span className="mono">{c.skills.certificationLabel}</span>
               {c.skills.certification}
             </p>
+          </div>
+        </section>
+
+        <section id="education" className="block">
+          <div className="wrap">
+            <h2>{c.education.heading}</h2>
+            <ul className="degrees">
+              {c.education.degrees.map((degree) => (
+                <li key={degree.title} className="degree">
+                  <div>
+                    <h3>{degree.title}</h3>
+                    <p>{degree.school}</p>
+                  </div>
+                  <span className="role-period mono">{degree.period}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

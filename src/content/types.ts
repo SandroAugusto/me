@@ -5,20 +5,25 @@ export interface Stat {
 
 export interface Role {
   company: string;
-  /** Job title. Left out where it has not been confirmed yet. */
-  title?: string;
-  /** Free-form period, e.g. "2026 — present". Left out where it has not been confirmed yet. */
-  period?: string;
+  title: string;
+  /** Free-form period, e.g. "Apr 2026 — present". */
+  period: string;
   /** Short context line, e.g. the consultancy the engagement ran through. */
   context?: string;
   summary: string;
-  highlights?: string[];
+  highlights: string[];
   stack?: string[];
 }
 
 export interface SkillGroup {
   title: string;
   items: string[];
+}
+
+export interface Degree {
+  title: string;
+  school: string;
+  period: string;
 }
 
 export interface Project {
@@ -35,6 +40,7 @@ export interface Content {
   stats: Stat[];
   experience: { heading: string; roles: Role[] };
   skills: { heading: string; groups: SkillGroup[]; certificationLabel: string; certification: string };
+  education: { heading: string; degrees: Degree[] };
   projects: { heading: string; items: Project[] };
   contact: { heading: string; text: string; linkedin: string; github: string };
   footer: { source: string };
