@@ -1,4 +1,3 @@
-import { SITE } from "@/lib/site";
 import type { Content } from "./types";
 
 export const en: Content = {
@@ -7,7 +6,7 @@ export const en: Content = {
     description:
       "Tech lead and senior software engineer with 10+ years in TypeScript, Node.js, React and authentication systems, working with companies such as Pinterest, Ask Media Group and XP Inc.",
   },
-  nav: { experience: "Experience", skills: "Skills", projects: "Projects", contact: "Contact" },
+  nav: { experience: "Experience", skills: "Skills", projects: "Project", contact: "Contact" },
   hero: {
     eyebrow: "Tech Lead · Senior Software Engineer",
     title: "I lead engineering teams and build web platforms that run at scale.",
@@ -110,8 +109,6 @@ export const en: Content = {
       { title: "Cloud and observability", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Leadership", items: ["Technical direction", "Architecture decisions", "Code review", "Hiring", "Mentoring"] },
     ],
-    certificationLabel: "Certification",
-    certification: "Claude Certified Architect – Foundations (CCA-F)",
   },
   education: {
     heading: "Education",
@@ -122,19 +119,13 @@ export const en: Content = {
     ],
   },
   projects: {
-    heading: "Side projects",
+    heading: "Side project",
     items: [
       {
         name: "vanessachihara.com.br",
         description: "Website and digital contact card for a medical practice: static, fast and built for local search.",
         href: "https://vanessachihara.com.br",
         linkLabel: "Visit site",
-      },
-      {
-        name: "This site",
-        description: "Next.js with TypeScript, statically exported, with typed bilingual content and a generated sitemap.",
-        href: SITE.repo,
-        linkLabel: "View source",
       },
     ],
   },

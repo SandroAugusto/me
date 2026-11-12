@@ -137,10 +137,6 @@ export function Site({ locale }: { locale: Locale }) {
                 </div>
               ))}
             </div>
-            <p className="certification">
-              <span className="mono">{c.skills.certificationLabel}</span>
-              {c.skills.certification}
-            </p>
           </div>
         </section>
 

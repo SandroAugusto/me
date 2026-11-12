@@ -1,4 +1,3 @@
-import { SITE } from "@/lib/site";
 import type { Content } from "./types";
 
 export const pt: Content = {
@@ -7,7 +6,7 @@ export const pt: Content = {
     description:
       "Tech lead e engenheiro de software sênior com mais de 10 anos em TypeScript, Node.js, React e sistemas de autenticação, atuando com empresas como Pinterest, Ask Media Group e XP Inc.",
   },
-  nav: { experience: "Experiência", skills: "Competências", projects: "Projetos", contact: "Contato" },
+  nav: { experience: "Experiência", skills: "Competências", projects: "Projeto", contact: "Contato" },
   hero: {
     eyebrow: "Tech Lead · Engenheiro de Software Sênior",
     title: "Lidero times de engenharia e construo plataformas web que operam em escala.",
@@ -110,8 +109,6 @@ export const pt: Content = {
       { title: "Nuvem e observabilidade", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Liderança", items: ["Direção técnica", "Decisões de arquitetura", "Code review", "Contratação", "Mentoria"] },
     ],
-    certificationLabel: "Certificação",
-    certification: "Claude Certified Architect – Foundations (CCA-F)",
   },
   education: {
     heading: "Formação",
@@ -122,19 +119,13 @@ export const pt: Content = {
     ],
   },
   projects: {
-    heading: "Projetos paralelos",
+    heading: "Projeto paralelo",
     items: [
       {
         name: "vanessachihara.com.br",
         description: "Site e cartão de contato digital para um consultório médico: estático, rápido e pensado para busca local.",
         href: "https://vanessachihara.com.br",
         linkLabel: "Visitar o site",
-      },
-      {
-        name: "Este site",
-        description: "Next.js com TypeScript, exportado como estático, com conteúdo bilíngue tipado e sitemap gerado.",
-        href: SITE.repo,
-        linkLabel: "Ver o código",
       },
     ],
   },

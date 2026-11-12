@@ -410,18 +410,6 @@ h3 {
   padding: 3px 0;
 }
 
-.certification {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin-top: 24px;
-}
-
-.certification .mono {
-  font-size: 14px;
-  color: var(--accent);
-}
-
 .project {
   display: flex;
   flex-direction: column;
@@ -486,7 +474,8 @@ h3 {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    max-width: 640px;
   }
 
   .block {

@@ -39,7 +39,7 @@ export interface Content {
   hero: { eyebrow: string; title: string; intro: string; location: string; primaryCta: string; secondaryCta: string };
   stats: Stat[];
   experience: { heading: string; roles: Role[] };
-  skills: { heading: string; groups: SkillGroup[]; certificationLabel: string; certification: string };
+  skills: { heading: string; groups: SkillGroup[] };
   education: { heading: string; degrees: Degree[] };
   projects: { heading: string; items: Project[] };
   contact: { heading: string; text: string; linkedin: string; github: string };
