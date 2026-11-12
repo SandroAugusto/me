@@ -73,7 +73,7 @@ export function Site({ locale }: { locale: Locale }) {
             <nav>
               <a href="#experience">{c.nav.experience}</a>
               <a href="#skills">{c.nav.skills}</a>
-              <a href="#projects">{c.nav.projects}</a>
+              <a href="#education">{c.nav.education}</a>
               <a href="#contact">{c.nav.contact}</a>
             </nav>
             <LanguageSwitch current={locale} label={c.languageSwitch.label} />
@@ -154,21 +154,6 @@ export function Site({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        <section id="projects" className="block">
-          <div className="wrap">
-            <h2>{c.projects.heading}</h2>
-            <div className="projects-grid">
-              {c.projects.items.map((project) => (
-                <a key={project.name} className="card project" href={project.href} target="_blank" rel="noopener noreferrer">
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <span className="project-link mono">{project.linkLabel} ↗</span>
-                </a>
-              ))}
-            </div>
           </div>
         </section>
 

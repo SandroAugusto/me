@@ -6,7 +6,7 @@ export const pt: Content = {
     description:
       "Tech lead e engenheiro de software sênior com mais de 10 anos em TypeScript, Node.js, React e sistemas de autenticação, atuando com empresas como Pinterest, Ask Media Group e XP Inc.",
   },
-  nav: { experience: "Experiência", skills: "Competências", projects: "Projeto", contact: "Contato" },
+  nav: { experience: "Experiência", skills: "Competências", education: "Formação", contact: "Contato" },
   hero: {
     eyebrow: "Tech Lead · Engenheiro de Software Sênior",
     title: "Lidero times de engenharia e construo plataformas web que operam em escala.",
@@ -116,17 +116,6 @@ export const pt: Content = {
       { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "PUC, Brasil", period: "2026 — 2027 (em curso)" },
       { title: "Pós-graduação em Desenvolvimento Web Full Stack", school: "PUC, Brasil", period: "2023 — 2024" },
       { title: "Bacharelado em Ciência da Computação", school: "UEZO, Brasil", period: "2012 — 2017" },
-    ],
-  },
-  projects: {
-    heading: "Projeto paralelo",
-    items: [
-      {
-        name: "vanessachihara.com.br",
-        description: "Site e cartão de contato digital para um consultório médico: estático, rápido e pensado para busca local.",
-        href: "https://vanessachihara.com.br",
-        linkLabel: "Visitar o site",
-      },
     ],
   },
   contact: {

@@ -26,22 +26,14 @@ export interface Degree {
   period: string;
 }
 
-export interface Project {
-  name: string;
-  description: string;
-  href: string;
-  linkLabel: string;
-}
-
 export interface Content {
   meta: { title: string; description: string };
-  nav: { experience: string; skills: string; projects: string; contact: string };
+  nav: { experience: string; skills: string; education: string; contact: string };
   hero: { eyebrow: string; title: string; intro: string; location: string; primaryCta: string; secondaryCta: string };
   stats: Stat[];
   experience: { heading: string; roles: Role[] };
   skills: { heading: string; groups: SkillGroup[] };
   education: { heading: string; degrees: Degree[] };
-  projects: { heading: string; items: Project[] };
   contact: { heading: string; text: string; linkedin: string; github: string };
   footer: { source: string };
   languageSwitch: { label: string };

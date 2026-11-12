@@ -393,8 +393,7 @@ h3 {
   padding: 24px;
 }
 
-.skills-grid,
-.projects-grid {
+.skills-grid {
   display: grid;
   gap: 16px;
 }
@@ -408,30 +407,6 @@ h3 {
   color: var(--muted);
   font-size: 16px;
   padding: 3px 0;
-}
-
-.project {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-decoration: none;
-  transition: border-color 0.15s;
-}
-
-.project:hover {
-  border-color: var(--accent);
-}
-
-.project p {
-  color: var(--muted);
-  font-size: 16px;
-  flex: 1;
-}
-
-.project-link {
-  font-size: 14px;
-  color: var(--accent);
-  margin-top: 6px;
 }
 
 .contact-text {
@@ -473,11 +448,6 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    max-width: 640px;
-  }
-
   .block {
     padding: 88px 0;
   }
@@ -494,8 +464,7 @@ h3 {
     scroll-behavior: auto;
   }
 
-  .btn,
-  .project {
+  .btn {
     transition: none;
   }
 }
