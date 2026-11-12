@@ -6,7 +6,7 @@ export const en: Content = {
     description:
       "Tech lead and senior software engineer with 10+ years in TypeScript, Node.js, React and authentication systems, working with companies such as Pinterest, Ask Media Group and XP Inc.",
   },
-  nav: { experience: "Experience", skills: "Skills", projects: "Project", contact: "Contact" },
+  nav: { experience: "Experience", skills: "Skills", education: "Education", contact: "Contact" },
   hero: {
     eyebrow: "Tech Lead · Senior Software Engineer",
     title: "I lead engineering teams and build web platforms that run at scale.",
@@ -116,17 +116,6 @@ export const en: Content = {
       { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "PUC, Brazil", period: "2026 — 2027 (expected)" },
       { title: "Postgraduate Certificate, Full Stack Web Development", school: "PUC, Brazil", period: "2023 — 2024" },
       { title: "BSc, Computer Science", school: "UEZO, Brazil", period: "2012 — 2017" },
-    ],
-  },
-  projects: {
-    heading: "Side project",
-    items: [
-      {
-        name: "vanessachihara.com.br",
-        description: "Website and digital contact card for a medical practice: static, fast and built for local search.",
-        href: "https://vanessachihara.com.br",
-        linkLabel: "Visit site",
-      },
     ],
   },
   contact: {
