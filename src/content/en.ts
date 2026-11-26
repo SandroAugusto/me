@@ -100,7 +100,7 @@ export const en: Content = {
         period: "Jan 2019 — Apr 2020",
         summary: "One of Brazil's largest telecom operators. Internal systems, mostly for HR.",
         highlights: [
-          "Built the labor litigation management system, which saved the company R$20 million.",
+          "Built the labor litigation management system that replaced an off-the-shelf product that never met requirements and the Excel spreadsheet used to track 17,000 labor lawsuits. Fewer adverse rulings, fewer missed deadlines, fewer external law firm hours and the retired license saved the company R$20 million.",
           "Designed an office relocation feasibility tool that calculated car, public transit and traffic-adjusted commutes for every employee at one of TIM's headquarters, and measured how much each person's commute would improve or worsen.",
           "Built an internal platform for registering and managing company events.",
         ],
