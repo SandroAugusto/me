@@ -50,6 +50,7 @@ export const pt: Content = {
           "Arquitetei um back-end de alta concorrência, orientado a eventos com Kafka, para mais de 20 milhões de usuários, que sustentou picos de 2x no tráfego e reduziu a latência das APIs em 40%.",
           "Construí filas de processamento distribuídas com Redis e BullMQ, rodando em Docker e Kubernetes na AWS, que carregam mais de 3 milhões de registros de anúncios por dia no Snowflake, sem perda de dados.",
           "Automatizei 95% da moderação de conteúdo de anúncios com fluxos de LLM na API do Gemini; os casos restantes chegavam aos revisores com uma decisão sugerida pelo modelo, o que reduziu o esforço de revisão manual em 99% e levou o tempo de aprovação de horas para segundos.",
+          "Liderei o time que construiu uma plataforma de push notifications que gerava mais de US$ 180 mil por mês em receita de AdSense.",
           "Construí fluxos de MFA, SSO via SAML e passkeys com WebAuthn para as plataformas da empresa.",
           "Reduzi os custos de plataforma em US$ 20 mil por mês, principalmente na AWS, com base em observabilidade no New Relic e no Grafana.",
         ],
@@ -93,7 +94,7 @@ export const pt: Content = {
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "2019 — abr 2020",
+        period: "jan 2019 — abr 2020",
         summary: "Uma das maiores operadoras de telecomunicações do Brasil.",
         highlights: [],
       },
@@ -101,13 +102,16 @@ export const pt: Content = {
         company: "Accenture",
         title: "Software Engineer",
         period: "2018 — jan 2019",
-        summary: "Consultoria global de tecnologia.",
-        highlights: [],
+        context: "cliente: Oi",
+        summary: "Consultoria global de tecnologia, atendendo a Oi, uma das maiores operadoras de telecomunicações do Brasil.",
+        highlights: [
+          "Analisei dados de clientes com PL/SQL e Tableau para apoiar iniciativas de retenção.",
+        ],
       },
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "jun 2013 — 2017",
+        period: "jun 2013 — set 2017",
         summary: "Uma das maiores operadoras de telecomunicações do Brasil.",
         highlights: [
           "Construí e mantive sistemas de back-end e integrações corporativas em times multidisciplinares de entrega.",
