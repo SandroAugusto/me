@@ -32,8 +32,9 @@ export const en: Content = {
         summary:
           "Lead engineer for Pinterest's Subsites Platform, the content infrastructure behind the company's public-facing sites.",
         highlights: [
-          "Lead a cross-functional team of seven (five engineers and two QA analysts), and own its architecture decisions, code reviews and hiring.",
-          "Designed and implemented passwordless authentication with Auth0 (email one-time codes), with a focus on deliverability and reliability.",
+          "Lead a cross-functional team of seven (five engineers and two QA analysts) and own its architecture decisions and code reviews.",
+          "Run hiring for the team: I interview candidates and make the final hiring decision, then run 1:1s, performance reviews and career plans.",
+          "Designed the authentication layer on Auth0 over OAuth 2.0 / OIDC: passwordless email one-time codes, MFA, SAML SSO and WebAuthn passkeys.",
           "Designed a machine-to-machine token caching strategy for server-to-server authentication, which cut auth latency between internal services.",
           "Built server actions and session management in the Next.js App Router with strict route-level scoping, so auth context cannot leak between routes.",
         ],
@@ -46,11 +47,13 @@ export const en: Content = {
         context: "via BairesDev",
         summary: "Digital media and advertising company with more than 20 million users across its content and ad platforms.",
         highlights: [
-          "Architected a high-concurrency, event-driven back end for 20M+ users that sustained 2x traffic peaks while reducing API latency by 40%.",
-          "Built distributed job queues on Redis and BullMQ that process more than 3 million ad records a day with zero data loss.",
-          "Automated 95% of ad content moderation with LLM workflows on the Gemini API, taking approval time from hours to seconds.",
+          "Architected a high-concurrency, Kafka-based event-driven back end for 20M+ users that sustained 2x traffic peaks while reducing API latency by 40%.",
+          "Built distributed job queues on Redis and BullMQ, running on Docker and Kubernetes in AWS, that load more than 3 million ad records a day into Snowflake with zero data loss.",
+          "Automated 95% of ad content moderation with LLM workflows on the Gemini API; the remaining cases reached reviewers with a model-suggested decision, cutting manual review effort by 99% and approval time from hours to seconds.",
+          "Built MFA, SAML SSO and WebAuthn passkey flows for the company's platforms.",
+          "Cut platform costs by $20K a month, mostly on AWS, guided by New Relic and Grafana observability.",
         ],
-        stack: ["TypeScript", "Node.js", "React", "Redis", "BullMQ", "Gemini API"],
+        stack: ["TypeScript", "Node.js", "React", "Kafka", "Redis", "BullMQ", "AWS", "Kubernetes", "Snowflake", "Gemini API"],
       },
       {
         company: "Vouched",
@@ -90,11 +93,24 @@ export const en: Content = {
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "Jun 2013 — Apr 2020",
-        context: "via Accenture",
+        period: "2019 — Apr 2020",
+        summary: "One of Brazil's largest telecom operators.",
+        highlights: [],
+      },
+      {
+        company: "Accenture",
+        title: "Software Engineer",
+        period: "2018 — Jan 2019",
+        summary: "Global technology consulting firm.",
+        highlights: [],
+      },
+      {
+        company: "TIM S.A.",
+        title: "Software Engineer",
+        period: "Jun 2013 — 2017",
         summary: "One of Brazil's largest telecom operators.",
         highlights: [
-          "Built and maintained back-end systems and enterprise integrations over a seven-year engagement, within cross-functional delivery teams.",
+          "Built and maintained back-end systems and enterprise integrations within cross-functional delivery teams.",
         ],
       },
     ],
