@@ -32,12 +32,16 @@ export const pt: Content = {
         summary:
           "Engenheiro líder da Subsites Platform do Pinterest, a infraestrutura de conteúdo por trás dos sites públicos da empresa.",
         highlights: [
-          "Lidero um time multidisciplinar de sete pessoas (cinco engenheiros e dois analistas de QA) e respondo pelas decisões de arquitetura, code reviews e contratações.",
-          "Projetei e implementei autenticação sem senha com Auth0 (códigos de uso único por e-mail), com foco em entregabilidade e confiabilidade.",
+          "Lidero um time multidisciplinar de sete pessoas (cinco engenheiros e dois analistas de QA) e respondo pelas decisões de arquitetura e pelos code reviews.",
+          "Lidero a migração de 15 sites públicos do Vercel para a plataforma web interna do Pinterest, consolidando o código de cada site em handlers compartilhados para consultas ao Sanity CMS, autenticação e pré-visualização de conteúdo, com paridade total de funcionalidades como requisito.",
+          "Conduzo a contratação do time: entrevisto os candidatos e tenho a decisão final; depois, conduzo 1:1s, avaliações de desempenho e planos de carreira.",
+          "Projetei a camada de autenticação: Auth0 com OAuth 2.0 / OIDC para parceiros (códigos de uso único por e-mail, MFA, passkeys com WebAuthn) e Okta com OIDC e SSO via SAML para funcionários.",
+          "Conduzi as revisões de segurança da edição visual e da pré-visualização de conteúdo do Sanity, inclusive em sites com login.",
+          "Uso agentes do Claude e do Codex para explorar arquitetura e auditar código, como na revisão da integração de traduções com o Smartling antes de levá-la a mais sites.",
           "Projetei uma estratégia de cache de tokens máquina a máquina para autenticação entre servidores, que reduziu a latência de autenticação entre serviços internos.",
           "Construí server actions e gestão de sessão no App Router do Next.js com escopo restrito por rota, para que o contexto de autenticação não vaze entre rotas.",
         ],
-        stack: ["TypeScript", "React", "Next.js", "GraphQL / Relay", "Auth0", "Python"],
+        stack: ["TypeScript", "React", "Next.js", "Python", "Sanity", "Auth0", "Okta", "Smartling"],
       },
       {
         company: "Ask Media Group",
@@ -46,11 +50,14 @@ export const pt: Content = {
         context: "via BairesDev",
         summary: "Empresa de mídia digital e publicidade com mais de 20 milhões de usuários em suas plataformas de conteúdo e anúncios.",
         highlights: [
-          "Arquitetei um back-end de alta concorrência, orientado a eventos, para mais de 20 milhões de usuários, que sustentou picos de 2x no tráfego e reduziu a latência das APIs em 40%.",
-          "Construí filas de processamento distribuídas com Redis e BullMQ que tratam mais de 3 milhões de registros de anúncios por dia, sem perda de dados.",
-          "Automatizei 95% da moderação de conteúdo de anúncios com fluxos de LLM na API do Gemini, levando o tempo de aprovação de horas para segundos.",
+          "Arquitetei um back-end de alta concorrência, orientado a eventos com Kafka, para mais de 20 milhões de usuários, que sustentou picos de 2x no tráfego e reduziu a latência das APIs em 40%.",
+          "Construí filas de processamento distribuídas com Redis e BullMQ, rodando em Docker e Kubernetes na AWS, que carregam mais de 3 milhões de registros de anúncios por dia no Snowflake, sem perda de dados.",
+          "Automatizei 95% da moderação de conteúdo de anúncios com fluxos de LLM na API do Gemini; os casos restantes chegavam aos revisores com uma decisão sugerida pelo modelo, o que reduziu o esforço de revisão manual em 99% e levou o tempo de aprovação de horas para segundos.",
+          "Liderei o time que construiu uma plataforma de push notifications que gerava mais de US$ 180 mil por mês em receita de AdSense.",
+          "Construí fluxos de MFA, SSO via SAML e passkeys com WebAuthn para as plataformas da empresa.",
+          "Reduzi os custos de plataforma em US$ 20 mil por mês, principalmente na AWS, com base em observabilidade no New Relic e no Grafana.",
         ],
-        stack: ["TypeScript", "Node.js", "React", "Redis", "BullMQ", "Gemini API"],
+        stack: ["TypeScript", "Node.js", "React", "Kafka", "Redis", "BullMQ", "AWS", "Kubernetes", "Snowflake", "Gemini API"],
       },
       {
         company: "Vouched",
@@ -90,11 +97,27 @@ export const pt: Content = {
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "jun 2013 — abr 2020",
-        context: "via Accenture",
+        period: "jan 2019 — abr 2020",
+        summary: "Uma das maiores operadoras de telecomunicações do Brasil.",
+        highlights: [],
+      },
+      {
+        company: "Accenture",
+        title: "Software Engineer",
+        period: "jan 2018 — jan 2019",
+        context: "cliente: Oi",
+        summary: "Consultoria global de tecnologia, atendendo a Oi, uma das maiores operadoras de telecomunicações do Brasil.",
+        highlights: [
+          "Analisei dados de clientes com PL/SQL e Tableau para apoiar iniciativas de retenção.",
+        ],
+      },
+      {
+        company: "TIM S.A.",
+        title: "Software Engineer",
+        period: "jun 2013 — set 2017",
         summary: "Uma das maiores operadoras de telecomunicações do Brasil.",
         highlights: [
-          "Construí e mantive sistemas de back-end e integrações corporativas ao longo de sete anos, em times multidisciplinares de entrega.",
+          "Construí e mantive sistemas de back-end e integrações corporativas em times multidisciplinares de entrega.",
         ],
       },
     ],
@@ -102,9 +125,9 @@ export const pt: Content = {
   skills: {
     heading: "Competências",
     groups: [
-      { title: "Front-end", items: ["TypeScript", "React", "Next.js (App Router)", "GraphQL / Relay", "Redux", "Tailwind CSS"] },
-      { title: "Back-end", items: ["Node.js", "Python", "APIs REST e GraphQL", "Sistemas orientados a eventos", "Fluxos com LLM"] },
-      { title: "Autenticação e identidade", items: ["Auth0", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT e sessões"] },
+      { title: "Front-end", items: ["TypeScript", "React", "Next.js (App Router)", "Redux", "Tailwind CSS", "Sanity (CMS headless)"] },
+      { title: "Back-end", items: ["Node.js", "Python", "APIs REST e GraphQL", "Sistemas orientados a eventos", "Fluxos com LLM", "Engenharia assistida por IA (Claude, Codex)"] },
+      { title: "Autenticação e identidade", items: ["Auth0", "Okta", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT e sessões"] },
       { title: "Dados e mensageria", items: ["PostgreSQL", "MongoDB", "Redis", "BullMQ", "Kafka", "Snowflake"] },
       { title: "Nuvem e observabilidade", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Liderança", items: ["Direção técnica", "Decisões de arquitetura", "Code review", "Contratação", "Mentoria"] },
@@ -113,7 +136,7 @@ export const pt: Content = {
   education: {
     heading: "Formação",
     degrees: [
-      { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "PUC, Brasil", period: "2026 — 2027 (em curso)" },
+      { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "UniPDS (diploma emitido pela Faculdade Anhanguera), Brasil", period: "2026 — 2027 (em curso)" },
       { title: "Pós-graduação em Desenvolvimento Web Full Stack", school: "PUC, Brasil", period: "2023 — 2024" },
       { title: "Bacharelado em Ciência da Computação", school: "UEZO, Brasil", period: "2012 — 2017" },
     ],

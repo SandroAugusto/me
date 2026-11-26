@@ -32,12 +32,16 @@ export const en: Content = {
         summary:
           "Lead engineer for Pinterest's Subsites Platform, the content infrastructure behind the company's public-facing sites.",
         highlights: [
-          "Lead a cross-functional team of seven (five engineers and two QA analysts), and own its architecture decisions, code reviews and hiring.",
-          "Designed and implemented passwordless authentication with Auth0 (email one-time codes), with a focus on deliverability and reliability.",
+          "Lead a cross-functional team of seven (five engineers and two QA analysts) and own its architecture decisions and code reviews.",
+          "Lead the migration of 15 public subsites from Vercel to Pinterest's internal web platform, consolidating per-site code into shared handlers for Sanity CMS queries, authentication and content preview, with full feature parity as a hard requirement.",
+          "Run hiring for the team: I interview candidates and make the final hiring decision, then run 1:1s, performance reviews and career plans.",
+          "Designed the authentication layer: Auth0 over OAuth 2.0 / OIDC for partners (passwordless email one-time codes, MFA, WebAuthn passkeys) and Okta OIDC and SAML SSO for employees.",
+          "Drove the security reviews for Sanity visual editing and content preview, including on sites behind login.",
+          "Use Claude and Codex agents for architecture exploration and code audits, such as reviewing the Smartling translation integration before rolling it out to more sites.",
           "Designed a machine-to-machine token caching strategy for server-to-server authentication, which cut auth latency between internal services.",
           "Built server actions and session management in the Next.js App Router with strict route-level scoping, so auth context cannot leak between routes.",
         ],
-        stack: ["TypeScript", "React", "Next.js", "GraphQL / Relay", "Auth0", "Python"],
+        stack: ["TypeScript", "React", "Next.js", "Python", "Sanity", "Auth0", "Okta", "Smartling"],
       },
       {
         company: "Ask Media Group",
@@ -46,11 +50,14 @@ export const en: Content = {
         context: "via BairesDev",
         summary: "Digital media and advertising company with more than 20 million users across its content and ad platforms.",
         highlights: [
-          "Architected a high-concurrency, event-driven back end for 20M+ users that sustained 2x traffic peaks while reducing API latency by 40%.",
-          "Built distributed job queues on Redis and BullMQ that process more than 3 million ad records a day with zero data loss.",
-          "Automated 95% of ad content moderation with LLM workflows on the Gemini API, taking approval time from hours to seconds.",
+          "Architected a high-concurrency, Kafka-based event-driven back end for 20M+ users that sustained 2x traffic peaks while reducing API latency by 40%.",
+          "Built distributed job queues on Redis and BullMQ, running on Docker and Kubernetes in AWS, that load more than 3 million ad records a day into Snowflake with zero data loss.",
+          "Automated 95% of ad content moderation with LLM workflows on the Gemini API; the remaining cases reached reviewers with a model-suggested decision, cutting manual review effort by 99% and approval time from hours to seconds.",
+          "Led the team that built a push notification platform generating more than $180K a month in AdSense revenue.",
+          "Built MFA, SAML SSO and WebAuthn passkey flows for the company's platforms.",
+          "Cut platform costs by $20K a month, mostly on AWS, guided by New Relic and Grafana observability.",
         ],
-        stack: ["TypeScript", "Node.js", "React", "Redis", "BullMQ", "Gemini API"],
+        stack: ["TypeScript", "Node.js", "React", "Kafka", "Redis", "BullMQ", "AWS", "Kubernetes", "Snowflake", "Gemini API"],
       },
       {
         company: "Vouched",
@@ -90,11 +97,27 @@ export const en: Content = {
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "Jun 2013 — Apr 2020",
-        context: "via Accenture",
+        period: "Jan 2019 — Apr 2020",
+        summary: "One of Brazil's largest telecom operators.",
+        highlights: [],
+      },
+      {
+        company: "Accenture",
+        title: "Software Engineer",
+        period: "Jan 2018 — Jan 2019",
+        context: "client: Oi",
+        summary: "Global technology consulting firm, working for Oi, one of Brazil's largest telecom operators.",
+        highlights: [
+          "Analyzed customer data with PL/SQL and Tableau to support customer retention initiatives.",
+        ],
+      },
+      {
+        company: "TIM S.A.",
+        title: "Software Engineer",
+        period: "Jun 2013 — Sep 2017",
         summary: "One of Brazil's largest telecom operators.",
         highlights: [
-          "Built and maintained back-end systems and enterprise integrations over a seven-year engagement, within cross-functional delivery teams.",
+          "Built and maintained back-end systems and enterprise integrations within cross-functional delivery teams.",
         ],
       },
     ],
@@ -102,9 +125,9 @@ export const en: Content = {
   skills: {
     heading: "Skills",
     groups: [
-      { title: "Front end", items: ["TypeScript", "React", "Next.js (App Router)", "GraphQL / Relay", "Redux", "Tailwind CSS"] },
-      { title: "Back end", items: ["Node.js", "Python", "REST and GraphQL APIs", "Event-driven systems", "LLM workflows"] },
-      { title: "Auth and identity", items: ["Auth0", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT and sessions"] },
+      { title: "Front end", items: ["TypeScript", "React", "Next.js (App Router)", "Redux", "Tailwind CSS", "Sanity (headless CMS)"] },
+      { title: "Back end", items: ["Node.js", "Python", "REST and GraphQL APIs", "Event-driven systems", "LLM workflows", "AI-assisted engineering (Claude, Codex)"] },
+      { title: "Auth and identity", items: ["Auth0", "Okta", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT and sessions"] },
       { title: "Data and messaging", items: ["PostgreSQL", "MongoDB", "Redis", "BullMQ", "Kafka", "Snowflake"] },
       { title: "Cloud and observability", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Leadership", items: ["Technical direction", "Architecture decisions", "Code review", "Hiring", "Mentoring"] },
@@ -113,7 +136,7 @@ export const en: Content = {
   education: {
     heading: "Education",
     degrees: [
-      { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "PUC, Brazil", period: "2026 — 2027 (expected)" },
+      { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "UniPDS (degree issued by Faculdade Anhanguera), Brazil", period: "2026 — 2027 (expected)" },
       { title: "Postgraduate Certificate, Full Stack Web Development", school: "PUC, Brazil", period: "2023 — 2024" },
       { title: "BSc, Computer Science", school: "UEZO, Brazil", period: "2012 — 2017" },
     ],
