@@ -89,7 +89,7 @@ export const pt: Content = {
         period: "abr 2020 — set 2021",
         summary: "Uma das maiores plataformas de investimentos do Brasil.",
         highlights: [
-          "Modernizei uma arquitetura de dados híbrida com PostgreSQL e MongoDB para transações financeiras de alta frequência, com consultas abaixo de um segundo e conformidade ACID completa.",
+          "Modernizei uma arquitetura de dados híbrida com PostgreSQL e MongoDB para transações financeiras de alta frequência, com consultas abaixo de um segundo sem abrir mão da consistência transacional.",
           "Liderei times de engenharia na entrega de software financeiro sob requisitos rígidos de confiabilidade, segurança e regulação.",
         ],
         stack: ["Node.js", "PostgreSQL", "MongoDB"],
@@ -105,11 +105,9 @@ export const pt: Content = {
         company: "Accenture",
         title: "Software Engineer",
         period: "jan 2018 — jan 2019",
-        context: "cliente: Oi",
-        summary: "Consultoria global de tecnologia, atendendo a Oi, uma das maiores operadoras de telecomunicações do Brasil.",
-        highlights: [
-          "Analisei dados de clientes com PL/SQL e Tableau para apoiar iniciativas de retenção.",
-        ],
+        summary: "Análise de dados e de retenção de clientes para a Oi, uma das maiores operadoras de telecomunicações do Brasil.",
+        highlights: [],
+        stack: ["PL/SQL", "Tableau"],
       },
       {
         company: "TIM S.A.",
