@@ -101,7 +101,7 @@ export const pt: Content = {
       {
         company: "Accenture",
         title: "Software Engineer",
-        period: "2018 — jan 2019",
+        period: "jan 2018 — jan 2019",
         context: "cliente: Oi",
         summary: "Consultoria global de tecnologia, atendendo a Oi, uma das maiores operadoras de telecomunicações do Brasil.",
         highlights: [
