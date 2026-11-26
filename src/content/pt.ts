@@ -98,8 +98,13 @@ export const pt: Content = {
         company: "TIM S.A.",
         title: "Software Engineer",
         period: "jan 2019 — abr 2020",
-        summary: "Uma das maiores operadoras de telecomunicações do Brasil.",
-        highlights: [],
+        summary: "Uma das maiores operadoras de telecomunicações do Brasil. Sistemas internos, principalmente de RH.",
+        highlights: [
+          "Desenvolvi o sistema de gestão do contencioso trabalhista, que gerou uma economia de R$ 20 milhões para a empresa.",
+          "Projetei uma ferramenta de viabilidade de mudança de sede que calculava os trajetos de carro, de transporte público e com trânsito de todos os colaboradores de uma das sedes da TIM, medindo quanto o trajeto de cada um melhoraria ou pioraria.",
+          "Criei uma plataforma interna de cadastro e gestão de eventos da empresa.",
+        ],
+        stack: ["Node.js", "React"],
       },
       {
         company: "Accenture",
