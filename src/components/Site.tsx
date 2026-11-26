@@ -30,11 +30,13 @@ function RoleItem({ role }: { role: Role }) {
       </div>
       <p className="role-title">{role.title}</p>
       <p className="role-summary">{role.summary}</p>
-      <ul className="role-highlights">
-        {role.highlights.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      {role.highlights.length > 0 ? (
+        <ul className="role-highlights">
+          {role.highlights.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ) : null}
       {role.stack ? (
         <ul className="tags mono">
           {role.stack.map((item) => (
@@ -116,7 +118,7 @@ export function Site({ locale }: { locale: Locale }) {
             <h2>{c.experience.heading}</h2>
             <ol className="roles">
               {c.experience.roles.map((role) => (
-                <RoleItem key={role.company} role={role} />
+                <RoleItem key={`${role.company}-${role.period}`} role={role} />
               ))}
             </ol>
           </div>
