@@ -468,3 +468,150 @@ h3 {
     transition: none;
   }
 }
+
+/* Writing */
+.writing-list {
+  display: grid;
+  gap: 16px;
+}
+
+.writing-item a {
+  display: block;
+  text-decoration: none;
+}
+
+.writing-item a:hover h3 {
+  color: var(--accent);
+}
+
+.writing-item p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.writing-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.article-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.article-back:hover {
+  color: var(--text);
+}
+
+.article {
+  max-width: 720px;
+  padding-top: 56px;
+  padding-bottom: 80px;
+}
+
+.article-title {
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.15;
+  margin-top: 12px;
+}
+
+.article-byline {
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.article-body {
+  margin-top: 40px;
+}
+
+.article-body p,
+.article-body ul,
+.article-body figure,
+.article-body .article-table {
+  margin-bottom: 20px;
+}
+
+.article-body h2 {
+  font-size: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  margin: 44px 0 16px;
+}
+
+.article-lead {
+  font-size: 19px;
+  color: var(--text);
+}
+
+.article-body a {
+  color: var(--accent);
+}
+
+.article-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.article-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.article-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.article-figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.article-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.article-figure figcaption {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.article-table {
+  overflow-x: auto;
+}
+
+.article-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.article-table th,
+.article-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.article-table th {
+  color: var(--muted);
+  font-weight: 600;
+}
