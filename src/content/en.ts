@@ -33,12 +33,15 @@ export const en: Content = {
           "Lead engineer for Pinterest's Subsites Platform, the content infrastructure behind the company's public-facing sites.",
         highlights: [
           "Lead a cross-functional team of seven (five engineers and two QA analysts) and own its architecture decisions and code reviews.",
+          "Lead the migration of 15 public subsites from Vercel to Pinterest's internal web platform, consolidating per-site code into shared handlers for Sanity CMS queries, authentication and content preview, with full feature parity as a hard requirement.",
           "Run hiring for the team: I interview candidates and make the final hiring decision, then run 1:1s, performance reviews and career plans.",
-          "Designed the authentication layer on Auth0 over OAuth 2.0 / OIDC: passwordless email one-time codes, MFA, SAML SSO and WebAuthn passkeys.",
+          "Designed the authentication layer: Auth0 over OAuth 2.0 / OIDC for partners (passwordless email one-time codes, MFA, WebAuthn passkeys) and Okta OIDC and SAML SSO for employees.",
+          "Drove the security reviews for Sanity visual editing and content preview, including on sites behind login.",
+          "Use Claude and Codex agents for architecture exploration and code audits, such as reviewing the Smartling translation integration before rolling it out to more sites.",
           "Designed a machine-to-machine token caching strategy for server-to-server authentication, which cut auth latency between internal services.",
           "Built server actions and session management in the Next.js App Router with strict route-level scoping, so auth context cannot leak between routes.",
         ],
-        stack: ["TypeScript", "React", "Next.js", "GraphQL / Relay", "Auth0", "Python"],
+        stack: ["TypeScript", "React", "Next.js", "Python", "Sanity", "Auth0", "Okta", "Smartling"],
       },
       {
         company: "Ask Media Group",
@@ -122,9 +125,9 @@ export const en: Content = {
   skills: {
     heading: "Skills",
     groups: [
-      { title: "Front end", items: ["TypeScript", "React", "Next.js (App Router)", "GraphQL / Relay", "Redux", "Tailwind CSS"] },
-      { title: "Back end", items: ["Node.js", "Python", "REST and GraphQL APIs", "Event-driven systems", "LLM workflows"] },
-      { title: "Auth and identity", items: ["Auth0", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT and sessions"] },
+      { title: "Front end", items: ["TypeScript", "React", "Next.js (App Router)", "Redux", "Tailwind CSS", "Sanity (headless CMS)"] },
+      { title: "Back end", items: ["Node.js", "Python", "REST and GraphQL APIs", "Event-driven systems", "LLM workflows", "AI-assisted engineering (Claude, Codex)"] },
+      { title: "Auth and identity", items: ["Auth0", "Okta", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT and sessions"] },
       { title: "Data and messaging", items: ["PostgreSQL", "MongoDB", "Redis", "BullMQ", "Kafka", "Snowflake"] },
       { title: "Cloud and observability", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Leadership", items: ["Technical direction", "Architecture decisions", "Code review", "Hiring", "Mentoring"] },
@@ -133,7 +136,7 @@ export const en: Content = {
   education: {
     heading: "Education",
     degrees: [
-      { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "PUC, Brazil", period: "2026 — 2027 (expected)" },
+      { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "UniPDS (degree issued by Faculdade Anhanguera), Brazil", period: "2026 — 2027 (expected)" },
       { title: "Postgraduate Certificate, Full Stack Web Development", school: "PUC, Brazil", period: "2023 — 2024" },
       { title: "BSc, Computer Science", school: "UEZO, Brazil", period: "2012 — 2017" },
     ],
