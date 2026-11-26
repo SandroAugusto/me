@@ -105,11 +105,9 @@ export const en: Content = {
         company: "Accenture",
         title: "Software Engineer",
         period: "Jan 2018 — Jan 2019",
-        context: "client: Oi",
-        summary: "Global technology consulting firm, working for Oi, one of Brazil's largest telecom operators.",
-        highlights: [
-          "Analyzed customer data with PL/SQL and Tableau to support customer retention initiatives.",
-        ],
+        summary: "Customer data and retention analysis for Oi, one of Brazil's largest telecom operators.",
+        highlights: [],
+        stack: ["PL/SQL", "Tableau"],
       },
       {
         company: "TIM S.A.",
