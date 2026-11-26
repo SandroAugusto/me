@@ -28,8 +28,9 @@ export default function SemanticCacheArticle() {
       <p className="article-lead">
         A semantic cache reuses a previous LLM answer when a new question is &ldquo;close enough&rdquo; to one it has
         already seen. I measured how often &ldquo;close enough&rdquo; returns the answer to a different question. The
-        short version: the common fix, tuning the similarity threshold, cannot solve it, and the second fix, an LLM
-        judge, looked perfect on my own test set and much weaker on real questions.
+        short version: in the configurations I tested, tuning the similarity threshold could not make the cache safe
+        without giving up most of its savings, and the second fix, an LLM judge, looked perfect on my own test set and
+        much weaker on real questions.
       </p>
 
       <h2>Why this matters</h2>
@@ -109,7 +110,8 @@ export default function SemanticCacheArticle() {
         <li>
           <strong>The judge was much weaker.</strong> <code>qwen2.5:3b</code> let through 7.3% of related questions
           (versus 0 of 30 in Experiment 2) and rejected a third of valid rewrites. A larger judge,{" "}
-          <code>qwen2.5:7b</code>, was more lenient rather than more accurate.
+          <code>qwen2.5:7b</code>, was more lenient rather than more accurate, at 9.2 seconds per query on CPU (p95
+          13.9 seconds).
         </li>
       </ul>
       <p>
@@ -164,6 +166,12 @@ export default function SemanticCacheArticle() {
         per query on CPU. It moves along the same trade-off curve instead of escaping it. The honest conclusion is that
         Experiment 2 overstated the judge: hand-written, one-word hard negatives are easy; real near-misses are not.
       </p>
+      <p>
+        The same table reads differently as the share of served cache hits that are wrong, which is what a user
+        actually experiences. With 25% related traffic, that is 3.1% for the 0.85 threshold, 3.6% for the 3B judge,
+        and 7.9% and 7.2% for the 0.80 threshold and the 7B judge. At 50% related traffic, every policy serves a wrong
+        answer on roughly one hit in ten or more.
+      </p>
 
       <h2>What I would do when designing a semantic cache</h2>
       <ul className="article-list">
@@ -181,6 +189,15 @@ export default function SemanticCacheArticle() {
           policy changes with how often related-but-different questions arrive. Only production traffic can answer that.
         </li>
         <li>
+          <strong>Fail closed.</strong> Use embeddings to retrieve candidates, not to decide that two questions are
+          equivalent, and when the decision is unclear, call the model.
+        </li>
+        <li>
+          <strong>Equivalent questions are not enough.</strong> A cached answer can be stale, or belong to a user with
+          different permissions, a different document version or a different conversation. None of that is visible to
+          an embedding; it has to be part of the cache key or the reuse decision. This experiment does not test it.
+        </li>
+        <li>
           <strong>Treat a judge as a trade-off, not a fix.</strong> It costs latency on most hits and, with small models,
           does not clearly beat a stricter threshold. Whether it pays off depends on how expensive the answer it saves is.
         </li>
@@ -192,6 +209,11 @@ export default function SemanticCacheArticle() {
         and 2, and 150 + 150 queries in Track A. Labels are human judgment, and each pair was judged in one order only.
         Judges ran on free CPU runners, so latency on a GPU would be much lower and was not measured. Frontier models may
         judge better, at a much higher price per check.
+      </p>
+      <p>
+        I also did not test the middle ground between an embedding and a generative judge: a cross-encoder trained for
+        question equivalence, or a bidirectional entailment check. They are cheaper than an LLM call and built for
+        exactly this decision. That is the next experiment, and this article will be updated with the result.
       </p>
       <p>
         Code, data and raw results are on <a href={REPO}>GitHub</a>, and every number above comes from runs committed
