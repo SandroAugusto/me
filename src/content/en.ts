@@ -6,7 +6,7 @@ export const en: Content = {
     description:
       "Tech lead and senior software engineer with 10+ years in TypeScript, Node.js, React and authentication systems, working with companies such as Pinterest, Ask Media Group and XP Inc.",
   },
-  nav: { experience: "Experience", skills: "Skills", education: "Education", contact: "Contact" },
+  nav: { experience: "Experience", writing: "Writing", skills: "Skills", education: "Education", contact: "Contact" },
   hero: {
     eyebrow: "Tech Lead · Senior Software Engineer",
     title: "I lead engineering teams and build web platforms that run at scale.",
@@ -133,6 +133,7 @@ export const en: Content = {
       { title: "Leadership", items: ["Technical direction", "Architecture decisions", "Code review", "Hiring", "Mentoring"] },
     ],
   },
+  writing: { heading: "Selected writing" },
   education: {
     heading: "Education",
     degrees: [

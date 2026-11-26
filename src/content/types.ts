@@ -28,11 +28,12 @@ export interface Degree {
 
 export interface Content {
   meta: { title: string; description: string };
-  nav: { experience: string; skills: string; education: string; contact: string };
+  nav: { experience: string; writing: string; skills: string; education: string; contact: string };
   hero: { eyebrow: string; title: string; intro: string; location: string; primaryCta: string; secondaryCta: string };
   stats: Stat[];
   experience: { heading: string; roles: Role[] };
   skills: { heading: string; groups: SkillGroup[] };
+  writing: { heading: string; note?: string };
   education: { heading: string; degrees: Degree[] };
   contact: { heading: string; text: string; linkedin: string; github: string };
   footer: { source: string };
