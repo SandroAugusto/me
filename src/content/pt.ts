@@ -100,7 +100,7 @@ export const pt: Content = {
         period: "jan 2019 — abr 2020",
         summary: "Uma das maiores operadoras de telecomunicações do Brasil. Sistemas internos, principalmente de RH.",
         highlights: [
-          "Desenvolvi o sistema de gestão do contencioso trabalhista, que gerou uma economia de R$ 20 milhões para a empresa.",
+          "Desenvolvi o sistema de gestão do contencioso trabalhista que substituiu um produto de prateleira que nunca atendeu aos requisitos e a planilha de Excel usada para controlar 17 mil processos trabalhistas. Menos condenações, menos prazos perdidos, menos horas de escritório externo e a licença cancelada geraram uma economia de R$ 20 milhões para a empresa.",
           "Projetei uma ferramenta de viabilidade de mudança de sede que calculava os trajetos de carro, de transporte público e com trânsito de todos os colaboradores de uma das sedes da TIM, medindo quanto o trajeto de cada um melhoraria ou pioraria.",
           "Criei uma plataforma interna de cadastro e gestão de eventos da empresa.",
         ],
