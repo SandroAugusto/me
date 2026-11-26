@@ -89,7 +89,7 @@ export const en: Content = {
         period: "Apr 2020 — Sep 2021",
         summary: "One of Brazil's largest investment platforms.",
         highlights: [
-          "Modernized a hybrid PostgreSQL and MongoDB data architecture for high-frequency financial transactions, reaching sub-second queries with full ACID compliance.",
+          "Modernized a hybrid PostgreSQL and MongoDB data architecture for high-frequency financial transactions, reaching sub-second queries while preserving transactional consistency.",
           "Led engineering teams delivering financial software under strict reliability, security and regulatory requirements.",
         ],
         stack: ["Node.js", "PostgreSQL", "MongoDB"],
