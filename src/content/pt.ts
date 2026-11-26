@@ -33,12 +33,15 @@ export const pt: Content = {
           "Engenheiro líder da Subsites Platform do Pinterest, a infraestrutura de conteúdo por trás dos sites públicos da empresa.",
         highlights: [
           "Lidero um time multidisciplinar de sete pessoas (cinco engenheiros e dois analistas de QA) e respondo pelas decisões de arquitetura e pelos code reviews.",
+          "Lidero a migração de 15 sites públicos do Vercel para a plataforma web interna do Pinterest, consolidando o código de cada site em handlers compartilhados para consultas ao Sanity CMS, autenticação e pré-visualização de conteúdo, com paridade total de funcionalidades como requisito.",
           "Conduzo a contratação do time: entrevisto os candidatos e tenho a decisão final; depois, conduzo 1:1s, avaliações de desempenho e planos de carreira.",
-          "Projetei a camada de autenticação sobre Auth0 com OAuth 2.0 / OIDC: códigos de uso único por e-mail (sem senha), MFA, SSO via SAML e passkeys com WebAuthn.",
+          "Projetei a camada de autenticação: Auth0 com OAuth 2.0 / OIDC para parceiros (códigos de uso único por e-mail, MFA, passkeys com WebAuthn) e Okta com OIDC e SSO via SAML para funcionários.",
+          "Conduzi as revisões de segurança da edição visual e da pré-visualização de conteúdo do Sanity, inclusive em sites com login.",
+          "Uso agentes do Claude e do Codex para explorar arquitetura e auditar código, como na revisão da integração de traduções com o Smartling antes de levá-la a mais sites.",
           "Projetei uma estratégia de cache de tokens máquina a máquina para autenticação entre servidores, que reduziu a latência de autenticação entre serviços internos.",
           "Construí server actions e gestão de sessão no App Router do Next.js com escopo restrito por rota, para que o contexto de autenticação não vaze entre rotas.",
         ],
-        stack: ["TypeScript", "React", "Next.js", "GraphQL / Relay", "Auth0", "Python"],
+        stack: ["TypeScript", "React", "Next.js", "Python", "Sanity", "Auth0", "Okta", "Smartling"],
       },
       {
         company: "Ask Media Group",
@@ -122,9 +125,9 @@ export const pt: Content = {
   skills: {
     heading: "Competências",
     groups: [
-      { title: "Front-end", items: ["TypeScript", "React", "Next.js (App Router)", "GraphQL / Relay", "Redux", "Tailwind CSS"] },
-      { title: "Back-end", items: ["Node.js", "Python", "APIs REST e GraphQL", "Sistemas orientados a eventos", "Fluxos com LLM"] },
-      { title: "Autenticação e identidade", items: ["Auth0", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT e sessões"] },
+      { title: "Front-end", items: ["TypeScript", "React", "Next.js (App Router)", "Redux", "Tailwind CSS", "Sanity (CMS headless)"] },
+      { title: "Back-end", items: ["Node.js", "Python", "APIs REST e GraphQL", "Sistemas orientados a eventos", "Fluxos com LLM", "Engenharia assistida por IA (Claude, Codex)"] },
+      { title: "Autenticação e identidade", items: ["Auth0", "Okta", "OAuth 2.0 / OIDC", "WebAuthn / Passkeys", "MFA / OTP", "SAML", "JWT e sessões"] },
       { title: "Dados e mensageria", items: ["PostgreSQL", "MongoDB", "Redis", "BullMQ", "Kafka", "Snowflake"] },
       { title: "Nuvem e observabilidade", items: ["AWS", "Docker", "Kubernetes", "CI/CD", "New Relic", "Grafana"] },
       { title: "Liderança", items: ["Direção técnica", "Decisões de arquitetura", "Code review", "Contratação", "Mentoria"] },
@@ -133,7 +136,7 @@ export const pt: Content = {
   education: {
     heading: "Formação",
     degrees: [
-      { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "PUC, Brasil", period: "2026 — 2027 (em curso)" },
+      { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "UniPDS (diploma emitido pela Faculdade Anhanguera), Brasil", period: "2026 — 2027 (em curso)" },
       { title: "Pós-graduação em Desenvolvimento Web Full Stack", school: "PUC, Brasil", period: "2023 — 2024" },
       { title: "Bacharelado em Ciência da Computação", school: "UEZO, Brasil", period: "2012 — 2017" },
     ],
