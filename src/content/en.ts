@@ -50,6 +50,7 @@ export const en: Content = {
           "Architected a high-concurrency, Kafka-based event-driven back end for 20M+ users that sustained 2x traffic peaks while reducing API latency by 40%.",
           "Built distributed job queues on Redis and BullMQ, running on Docker and Kubernetes in AWS, that load more than 3 million ad records a day into Snowflake with zero data loss.",
           "Automated 95% of ad content moderation with LLM workflows on the Gemini API; the remaining cases reached reviewers with a model-suggested decision, cutting manual review effort by 99% and approval time from hours to seconds.",
+          "Led the team that built a push notification platform generating more than $180K a month in AdSense revenue.",
           "Built MFA, SAML SSO and WebAuthn passkey flows for the company's platforms.",
           "Cut platform costs by $20K a month, mostly on AWS, guided by New Relic and Grafana observability.",
         ],
@@ -93,7 +94,7 @@ export const en: Content = {
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "2019 — Apr 2020",
+        period: "Jan 2019 — Apr 2020",
         summary: "One of Brazil's largest telecom operators.",
         highlights: [],
       },
@@ -101,13 +102,16 @@ export const en: Content = {
         company: "Accenture",
         title: "Software Engineer",
         period: "2018 — Jan 2019",
-        summary: "Global technology consulting firm.",
-        highlights: [],
+        context: "client: Oi",
+        summary: "Global technology consulting firm, working for Oi, one of Brazil's largest telecom operators.",
+        highlights: [
+          "Analyzed customer data with PL/SQL and Tableau to support customer retention initiatives.",
+        ],
       },
       {
         company: "TIM S.A.",
         title: "Software Engineer",
-        period: "Jun 2013 — 2017",
+        period: "Jun 2013 — Sep 2017",
         summary: "One of Brazil's largest telecom operators.",
         highlights: [
           "Built and maintained back-end systems and enterprise integrations within cross-functional delivery teams.",
