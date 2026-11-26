@@ -1,6 +1,7 @@
 import { content } from "@/content";
 import type { Role } from "@/content/types";
 import { SITE, type Locale } from "@/lib/site";
+import { ARTICLE_LIST } from "@/content/writing";
 import { LanguageSwitch } from "./LanguageSwitch";
 
 function Logo() {
@@ -72,6 +73,7 @@ export function Site({ locale }: { locale: Locale }) {
           <div className="bar-right">
             <nav>
               <a href="#experience">{c.nav.experience}</a>
+              <a href="#writing">{c.nav.writing}</a>
               <a href="#skills">{c.nav.skills}</a>
               <a href="#education">{c.nav.education}</a>
               <a href="#contact">{c.nav.contact}</a>
@@ -119,6 +121,24 @@ export function Site({ locale }: { locale: Locale }) {
                 <RoleItem key={role.company} role={role} />
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section id="writing" className="block">
+          <div className="wrap">
+            <h2>{c.writing.heading}</h2>
+            {c.writing.note ? <p className="writing-meta">{c.writing.note}</p> : null}
+            <ul className="writing-list">
+              {ARTICLE_LIST.map((article) => (
+                <li key={article.slug} className="writing-item card">
+                  <a href={article.path}>
+                    <p className="writing-meta mono">{article.meta}</p>
+                    <h3>{article.title}</h3>
+                    <p>{article.summary}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
