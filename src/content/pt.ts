@@ -89,7 +89,7 @@ export const pt: Content = {
         period: "abr 2020 — set 2021",
         summary: "Uma das maiores plataformas de investimentos do Brasil.",
         highlights: [
-          "Modernizei uma arquitetura de dados híbrida com PostgreSQL e MongoDB para transações financeiras de alta frequência, com consultas abaixo de um segundo e conformidade ACID completa.",
+          "Modernizei uma arquitetura de dados híbrida com PostgreSQL e MongoDB para transações financeiras de alta frequência, com consultas abaixo de um segundo sem abrir mão da consistência transacional.",
           "Liderei times de engenharia na entrega de software financeiro sob requisitos rígidos de confiabilidade, segurança e regulação.",
         ],
         stack: ["Node.js", "PostgreSQL", "MongoDB"],
