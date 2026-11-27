@@ -17,11 +17,11 @@ export function buildMetadata(locale: Locale): Metadata {
     openGraph: {
       type: "website",
       url: PATHS[locale],
-      siteName: SITE.brand,
+      siteName: SITE.person,
       title: meta.title,
       description: meta.description,
       locale: OG_LOCALE[locale],
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: `${SITE.person} — ${SITE.brand}` }],
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: SITE.person }],
     },
     twitter: { card: "summary_large_image" },
     icons: { icon: "/icon.svg" },

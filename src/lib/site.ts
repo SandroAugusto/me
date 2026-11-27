@@ -1,5 +1,5 @@
 export const SITE = {
-  url: "https://soatech.dev",
+  url: "https://sandroaugusto.dev",
   brand: "SOATECH",
   legalName: "S.O.A Soluções Tecnológicas",
   person: "Sandro Augusto",

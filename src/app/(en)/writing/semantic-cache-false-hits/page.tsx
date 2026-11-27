@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: article.path,
-    siteName: SITE.brand,
+    siteName: SITE.person,
     title: article.title,
     description: article.summary,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${SITE.person} — ${SITE.brand}` }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: SITE.person }],
   },
   twitter: { card: "summary_large_image" },
 };
