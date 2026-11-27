@@ -1,8 +1,8 @@
 {
-  "name": "soatech-site",
+  "name": "sandroaugusto-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal site of Sandro Augusto (SOATECH), statically exported with Next.js.",
+  "description": "Personal site of Sandro Augusto, statically exported with Next.js.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
