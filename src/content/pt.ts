@@ -141,6 +141,7 @@ export const pt: Content = {
     heading: "Formação",
     degrees: [
       { title: "Pós-graduação em Engenharia de Software com IA Aplicada", school: "UniPDS (diploma emitido pela Faculdade Anhanguera), Brasil", period: "2026 — 2027 (em curso)" },
+      { title: "Pós-graduação em Data Science e Machine Learning", school: "Faculdade XP Educação (IGTI), Brasil", period: "2024" },
       { title: "Pós-graduação em Desenvolvimento Web Full Stack", school: "PUC, Brasil", period: "2023 — 2024" },
       { title: "Bacharelado em Ciência da Computação", school: "UEZO, Brasil", period: "2012 — 2017" },
     ],
