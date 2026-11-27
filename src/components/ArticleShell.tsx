@@ -7,10 +7,10 @@ export function ArticleShell({ title, meta, children }: { title: string; meta: s
       <header className="site-header">
         <div className="wrap bar">
           <a className="brand" href="/">
-            {SITE.brand}
+            {SITE.person}
           </a>
           <a className="article-back" href="/#writing">
-            ← {SITE.person}
+            ← Writing
           </a>
         </div>
       </header>
@@ -25,7 +25,7 @@ export function ArticleShell({ title, meta, children }: { title: string; meta: s
       <footer className="site-footer">
         <div className="wrap footer-row">
           <span>
-            © {new Date().getFullYear()} {SITE.brand} · {SITE.legalName}
+            © {new Date().getFullYear()} {SITE.person} · {SITE.legalName}
           </span>
           <a href={SITE.repo} target="_blank" rel="noopener noreferrer">
             Source code

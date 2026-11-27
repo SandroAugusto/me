@@ -1,6 +1,6 @@
-# soatech.dev
+# sandroaugusto.dev
 
-Personal site of Sandro Augusto (SOATECH). A statically exported Next.js app in English and Portuguese.
+Personal site of Sandro Augusto, at [sandroaugusto.dev](https://sandroaugusto.dev). A statically exported Next.js app in English and Portuguese.
 
 ## Stack
 
