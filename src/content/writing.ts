@@ -16,6 +16,14 @@ export const ARTICLES = {
       "Tuning the similarity threshold could not make a semantic cache safe without giving up most of its savings, and an LLM judge that looked perfect on hand-written pairs was much weaker on real ones.",
     meta: "LLM systems · Experiment · 8 min read",
   },
+  "time-in-range": {
+    slug: "time-in-range",
+    path: "/writing/time-in-range/",
+    title: "How long does a liquidity range last? Testing the textbook formula on public prices",
+    summary:
+      "The standard formula for how long a price stays in a range was wrong in a way that depended on the range's width, and a large part of the error I first saw came from how I was measuring.",
+    meta: "Quantitative modelling · Experiment · 7 min read",
+  },
 } satisfies Record<string, Article>;
 
 export const ARTICLE_LIST: Article[] = Object.values(ARTICLES);
