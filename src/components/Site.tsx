@@ -68,9 +68,9 @@ export function Site({ locale }: { locale: Locale }) {
 
       <header className="site-header">
         <div className="wrap bar">
-          <a className="brand" href="#top" aria-label={SITE.brand}>
+          <a className="brand" href="#top" aria-label={SITE.person}>
             <Logo />
-            {SITE.brand}
+            {SITE.person}
           </a>
           <div className="bar-right">
             <nav>
@@ -198,7 +198,7 @@ export function Site({ locale }: { locale: Locale }) {
       <footer className="site-footer">
         <div className="wrap footer-row">
           <span>
-            © {new Date().getFullYear()} {SITE.brand} · {SITE.legalName}
+            © {new Date().getFullYear()} {SITE.person} · {SITE.legalName}
           </span>
           <a href={SITE.repo} target="_blank" rel="noopener noreferrer">
             {c.footer.source}
