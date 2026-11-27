@@ -141,6 +141,7 @@ export const en: Content = {
     heading: "Education",
     degrees: [
       { title: "Postgraduate Certificate, Software Engineering in Applied AI", school: "UniPDS (degree issued by Faculdade Anhanguera), Brazil", period: "2026 — 2027 (expected)" },
+      { title: "Postgraduate Certificate, Data Science and Machine Learning", school: "Faculdade XP Educação (IGTI), Brazil", period: "2024" },
       { title: "Postgraduate Certificate, Full Stack Web Development", school: "PUC, Brazil", period: "2023 — 2024" },
       { title: "BSc, Computer Science", school: "UEZO, Brazil", period: "2012 — 2017" },
     ],
