@@ -172,6 +172,12 @@ export default function SemanticCacheArticle() {
         and 7.9% and 7.2% for the 0.80 threshold and the 7B judge. At 50% related traffic, every policy serves a wrong
         answer on roughly one hit in ten or more.
       </p>
+      <p>
+        One caveat applies to every Track A number. The dataset labels each question only against its own original, so
+        a hit on a <em>different</em> cached question is counted as wrong without a label saying so. The wrong-answer
+        figures are therefore an upper bound and the answers saved a lower bound. Those hits are now exported for
+        labeling by hand, and this article will be updated with the corrected figures.
+      </p>
 
       <h2>What I would do when designing a semantic cache</h2>
       <ul className="article-list">
