@@ -135,29 +135,100 @@ export default function TimeInRangeArticle() {
 
       <h2>What is left after the correction</h2>
       <p>
-        <strong>The error depends on width.</strong> Even with the measurement fixed, a &plusmn;1% range lasts longer
-        than the model says at the median: 1.5 to 1.7 times longer with volatility from the previous 30 days, and over
-        a wider spread with the 7-day estimator. A &plusmn;8% range ends anywhere from on time to over 20% early. The model has one
-        &sigma; for every horizon, and these two widths live on very different horizons: hours for &plusmn;1%, weeks for
-        &plusmn;8%. One number does not describe both. I have candidate explanations and have tested none of them: most
-        hours are quieter than the daily volatility implies, with moves arriving in bursts; or the price ratio
-        mean-reverts over short horizons and trends over longer ones. Drift over the weeks a wide range lives is
-        a third. Return variance at 1 hour, 4 hours, 1 day and 7 days, exit times grouped by the volatility each
-        position actually saw, and drift over the same windows would start to separate them.
+        <strong>The error depends on width.</strong> Even with the measurement fixed, a &plusmn;1% range lasts 1.5 to
+        1.6 times longer than the model says at the median, with volatility from the previous 30 days. At &plusmn;8% the
+        median came out on time or early, but as the next section shows, that difference is within the noise of the
+        method itself.
+      </p>
+
+      <h2>Second result: the model&rsquo;s own world does not reproduce it</h2>
+      <p>
+        To find out why narrow ranges last too long, I rebuilt the two years of prices in three altered ways and reran
+        the study on each, forty times with different random seeds:
+      </p>
+      <ul className="article-list">
+        <li>
+          <strong>Signs randomised:</strong> every hourly move keeps its size and its place in time, but goes up or
+          down at random. Large moves still come in bursts; any tendency to reverse or to trend is gone.
+        </li>
+        <li>
+          <strong>Moves shuffled:</strong> the same hourly moves in random order. Their sizes are kept, the bursts are
+          not.
+        </li>
+        <li>
+          <strong>A Gaussian random walk</strong> with the same average volatility: the model&rsquo;s own world.
+        </li>
+      </ul>
+      <div className="article-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>&plusmn;1%</th>
+              <th>&plusmn;8%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real prices</td>
+              <td>1.14</td>
+              <td>0.71</td>
+            </tr>
+            <tr>
+              <td>Signs randomised</td>
+              <td>1.15 (1.09&ndash;1.23)</td>
+              <td>0.83 (0.74&ndash;0.93)</td>
+            </tr>
+            <tr>
+              <td>Moves shuffled</td>
+              <td>1.02 (0.94&ndash;1.10)</td>
+              <td>0.80 (0.72&ndash;0.85)</td>
+            </tr>
+            <tr>
+              <td>Gaussian walk</td>
+              <td>0.77 (0.69&ndash;0.83)</td>
+              <td>0.74 (0.67&ndash;0.83)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Median time in range as a multiple of E[T], corrected for hourly checks, with volatility re-estimated on each
+        path the same way. For the altered paths: the median of forty runs, with the 10th to 90th percentile in
+        brackets.
       </p>
       <p>
-        <strong>At &plusmn;8%, both tails are wider than the model.</strong> At this width the measurement correction
-        barely matters, and over two years 14% of ranges were out within a quarter of E[T] (model: 9%), while 19% were
-        still in range at twice E[T] (model: 11%). A rule built on the expected value would be surprised in both
-        directions more often than the formula suggests. At narrower widths the tails are mixed up with the
-        measurement problem, so I would not generalise this.
+        At &plusmn;1%, the Gaussian walk lands near the model and the real prices do not. Paths that keep the real
+        sizes of moves come close: shuffled, they give 1.02; with random signs, 1.15 (or 1.10 when the altered paths
+        use the volatility the real prices had on each date). Shuffling keeps how large the moves are; randomising signs also keeps when the large ones come. Which of the two does more, and whether the direction
+        of moves adds anything, these runs do not separate: the ranges overlap, and at &plusmn;2% or on minute data the
+        answer depends on how volatility is estimated on the altered paths. My reading, which I have not tested
+        directly: most hours are calmer than the average volatility implies, so a narrow range opened in a calm hour
+        lasts much longer than the formula says.
       </p>
       <p>
-        <strong>The volatility window is still an open question.</strong> I expected a 30-day window to lag behind the
-        current regime and do worse than a 7-day one. Over two years of hourly data the medians differed by at most
-        0.04. Over the last 120 days they differed more, but there the two estimators started on different days, so
-        that comparison is not like for like. Neither result measures lag, which would need exit times grouped by
-        changes in regime, so this study does not answer it.
+        At &plusmn;8%, the Gaussian walk&rsquo;s own median ranges from 0.67 to 0.83 between seeds, which holds both
+        the model&rsquo;s 0.757 and the 0.71 on real prices. So the median at that width is not evidence against the
+        model. The tails are: on real prices, 16% of &plusmn;8% ranges were out within a quarter of E[T] and 18% were
+        still in at twice E[T], against about 11% for each on the Gaussian walk. The slow ones are consistent with bursts of
+        volatility, though shuffled paths, which have none, come close too; what produces the extra early exits I have
+        not identified.
+      </p>
+      <p>
+        These ranges measure the noise of the method on the same two years of prices, not uncertainty about how the
+        market will behave next.
+      </p>
+
+      <h2>Third result: both volatility windows are wrong, in opposite situations</h2>
+      <p>
+        I had expected a 30-day window to lag behind the market and a 7-day window to do better. On the same opening
+        dates, over the two years of hourly data, the two gave the same medians to within 0.02. As forecasts of the volatility of the following week, both
+        miss by a factor of about 1.4 either way (root mean square, here with both windows measured from hourly
+        moves), which is roughly a factor of two in E[T]. After
+        volatility rises, the 7-day window overshoots the next week by about 45%, while the 30-day window is nearly right; part of that is probably a noisy
+        estimate falling back after a jump, which I have not tested. After volatility falls, the 30-day
+        window overshoots by about 30%. Averaging the two on a log scale had a slightly smaller error overall, but these forward weeks overlap and I
+        attach no uncertainty to differences that small.
       </p>
 
       <h2>What I would not conclude from this</h2>
@@ -172,12 +243,13 @@ export default function TimeInRangeArticle() {
         </li>
         <li>
           Results depend on the period: at &plusmn;8% the corrected median was 0.71 over two years and 0.59 over the
-          last 120 days.
+          last 120 days. On the 120 days of minute data, the Gaussian walk&rsquo;s own &plusmn;1% median varied from 0.62 to 1.00
+          between seeds (10th to 90th percentile), so I draw no conclusions from the shorter window alone.
         </li>
         <li>
           Fees are not part of this. Whether fees in range scale with &sigma; / h, which is what would make the width
-          cancel out of the economics, needs pool volume and liquidity by price level over time. I have not found a
-          free, reproducible source for that, so that half of the model is still unvalidated.
+          cancel out of the economics, needs pool volume and liquidity by price level over time. I have not yet checked a free,
+          reproducible source for that, so that half of the model is still unvalidated.
         </li>
       </ul>
 
@@ -186,8 +258,7 @@ export default function TimeInRangeArticle() {
         The study is part of a TypeScript project for analysing concentrated-liquidity positions. The exit-time
         distribution and the correction are tested against values computed independently in Python and against seeded
         Monte Carlo simulations; a separate Python script, outside the repository, reproduced the medians to two decimals. Raw prices are
-        cached locally and never committed, and the repository holds no real position data: everything is synthetic or
-        public, so the whole result can be rerun from the repository.
+        cached locally and never committed, and everything in the repository is synthetic or public, so the whole result can be rerun from the repository.
       </p>
       <p>
         The practical lesson is older than this project: when a model and the data disagree, check the measurement
