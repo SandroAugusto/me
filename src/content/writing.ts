@@ -13,7 +13,7 @@ export const ARTICLES = {
     path: "/writing/semantic-cache-false-hits/",
     title: "Similar is not the same: measuring false hits in semantic caches",
     summary:
-      "Tuning the similarity threshold cannot stop a semantic cache from answering the wrong question, and an LLM judge that looked perfect on hand-written pairs was much weaker on real ones.",
+      "Tuning the similarity threshold could not make a semantic cache safe without giving up most of its savings, and an LLM judge that looked perfect on hand-written pairs was much weaker on real ones.",
     meta: "LLM systems · Experiment · 8 min read",
   },
 } satisfies Record<string, Article>;
