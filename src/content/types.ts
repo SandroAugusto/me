@@ -28,7 +28,7 @@ export interface Degree {
 
 export interface Content {
   meta: { title: string; description: string };
-  nav: { experience: string; writing: string; skills: string; education: string; contact: string };
+  nav: { menu: string; experience: string; writing: string; skills: string; education: string; contact: string };
   hero: { eyebrow: string; title: string; intro: string; location: string; primaryCta: string; secondaryCta: string };
   stats: Stat[];
   experience: { heading: string; roles: Role[] };

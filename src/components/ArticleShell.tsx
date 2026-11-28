@@ -15,11 +15,11 @@ export function ArticleShell({ slug, locale, children }: { slug: ArticleSlug; lo
         <div className="wrap bar">
           <a className="brand" href={PATHS[locale]} aria-label={SITE.person}>
             <Logo />
-            {SITE.person}
+            <span className="brand-name">{SITE.person}</span>
           </a>
           <div className="bar-right">
-            <a className="article-back" href={`${PATHS[locale]}#writing`}>
-              ← {c.nav.writing}
+            <a className="article-back" href={`${PATHS[locale]}#writing`} aria-label={c.nav.writing}>
+              ← <span className="article-back-label">{c.nav.writing}</span>
             </a>
             <LanguageSwitch current={locale} label={c.languageSwitch.label} paths={articlePaths(slug)} />
           </div>

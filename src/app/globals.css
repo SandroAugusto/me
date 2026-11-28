@@ -94,6 +94,10 @@ ol {
   text-decoration: none;
 }
 
+.brand-name {
+  white-space: nowrap;
+}
+
 .brand svg {
   width: 28px;
   height: 28px;
@@ -119,6 +123,68 @@ ol {
 
 .site-header nav a:hover {
   color: var(--text);
+}
+
+/* Section links on narrow screens: a disclosure under a menu button. */
+.menu {
+  position: relative;
+}
+
+.menu summary {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+}
+
+.menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.menu[open] summary {
+  color: var(--text);
+  background: var(--panel);
+}
+
+.menu summary svg {
+  width: 22px;
+  height: 22px;
+}
+
+.site-header nav.menu-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  min-width: 220px;
+  padding: 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.site-header nav.menu-panel a {
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.site-header nav.menu-panel a:hover {
+  background: var(--bg);
 }
 
 .langs {
@@ -430,10 +496,23 @@ h3 {
   gap: 8px 24px;
 }
 
-@media (min-width: 760px) {
+/*
+ * The section links move into the header only where the whole row fits: logo,
+ * name on one line, five links and the language switch. The Portuguese labels
+ * are the longest and need about 840px, so the switch is at 900px, not at the
+ * 760px layout breakpoint below. Under it, the links are in the menu.
+ */
+@media (min-width: 900px) {
   .site-header nav {
     display: flex;
   }
+
+  .menu {
+    display: none;
+  }
+}
+
+@media (min-width: 760px) {
 
   .hero {
     padding: 104px 0 88px;
@@ -456,6 +535,41 @@ h3 {
 @media (max-width: 480px) {
   .actions .btn {
     width: 100%;
+  }
+
+  /* Keep the header on one line: tighter spacing, and the article's back link as an arrow. */
+  .bar,
+  .bar-right {
+    gap: 10px;
+  }
+
+  .langs a {
+    min-width: 40px;
+  }
+
+  .brand {
+    letter-spacing: 0.04em;
+    font-size: 15px;
+  }
+
+  .brand svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .article-back-label {
+    display: none;
+  }
+
+  .article-back {
+    font-size: 20px;
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 359px) {
+  .brand-name {
+    display: none;
   }
 }
 
