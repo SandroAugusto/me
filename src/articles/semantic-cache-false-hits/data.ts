@@ -22,6 +22,15 @@ export const THRESHOLD_ONLY = {
   paraphrasesReusedAtSafePct: 0,
 } as const;
 
+/**
+ * Experiment 1 on two more embedding models: mean similarity of paraphrases,
+ * and the lowest and highest mean among the hard-negative categories.
+ */
+export const OTHER_EMBEDDING_MODELS = [
+  { model: "mxbai-embed-large", paraphraseMean: 0.744, hardNegativeCategoryMeans: [0.761, 0.961] },
+  { model: "bge-m3", paraphraseMean: 0.775, hardNegativeCategoryMeans: [0.808, 0.968] },
+] as const;
+
 /** Experiment 2: threshold plus an LLM judge, on the hand-written pairs. */
 export const JUDGE_ON_PAIRS = {
   threshold: 0.6,
@@ -30,6 +39,30 @@ export const JUDGE_ON_PAIRS = {
   rejectedPlain: 29,
   /** Rule of three: the error rate 0 errors in 30 still allows, in percent. */
   ruleOfThreePct: 10,
+  /** Pairs answered differently when the two questions are swapped, of PAIRS.total. */
+  flippedByOrder: { small: 4, large: 1 },
+  /**
+   * Generation time above which the 7B judge saves time at this threshold, in
+   * seconds: one order (plain and guided prompts), and both orders.
+   */
+  breakEvenSeconds: { oneOrder: [4.7, 5.0], bothOrders: 9.9 },
+  /** Seconds per call of the 3B judge in two runs on the same kind of runner. */
+  latencyBetweenRuns: [1.7, 0.9],
+} as const;
+
+/** Cross-encoder trained on duplicate questions (cross-encoder/quora-distilroberta-base). */
+export const CROSS_ENCODER = {
+  model: "cross-encoder/quora-distilroberta-base",
+  /** Hand-written pairs, at a score threshold of 0.50. */
+  onPairs: { threshold: 0.5, paraphrasesReusedPct: 17, hardNegativesAcceptedPct: 10 },
+  /** Real questions, pair level: related questions accepted and rewrites reused, in percent. */
+  matched: [
+    { id: "cosine-0.85", cosine: true, threshold: 0.85, relatedAcceptedPct: 5.7, rewritesReusedPct: 61.0 },
+    { id: "cross-0.50", cosine: false, threshold: 0.5, relatedAcceptedPct: 5.7, rewritesReusedPct: 49.9 },
+    { id: "cosine-0.88", cosine: true, threshold: 0.88, relatedAcceptedPct: 2.3, rewritesReusedPct: 44.4 },
+    { id: "cross-0.95", cosine: false, threshold: 0.95, relatedAcceptedPct: 2.2, rewritesReusedPct: 31.6 },
+  ],
+  millisecondsPerPair: 46,
 } as const;
 
 /** Track A: Medical Question Pairs against a whole cache. */

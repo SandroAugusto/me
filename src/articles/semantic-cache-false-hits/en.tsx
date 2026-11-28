@@ -1,5 +1,15 @@
 import { formatter } from "@/lib/format";
-import { JUDGE_ON_PAIRS, PAIRS, PER_THOUSAND, REPO, THRESHOLD_ONLY, TRACK_A, WRONG_SHARE_AT_25 } from "./data";
+import {
+  CROSS_ENCODER,
+  JUDGE_ON_PAIRS,
+  OTHER_EMBEDDING_MODELS,
+  PAIRS,
+  PER_THOUSAND,
+  REPO,
+  THRESHOLD_ONLY,
+  TRACK_A,
+  WRONG_SHARE_AT_25,
+} from "./data";
 
 const { n, pct } = formatter("en");
 
@@ -49,6 +59,18 @@ export function SemanticCacheEn() {
         of paraphrases. This is not a calibration problem; it is a property of what embeddings capture. They are good
         at topic and weak at the small details that change an answer.
       </p>
+      <p>
+        It is not a property of one model either. I repeated the sweep with <code>mxbai-embed-large</code> and with the
+        multilingual <code>bge-m3</code>. In both, every hard-negative category averaged higher than the paraphrases (
+        {OTHER_EMBEDDING_MODELS.map((m, i) => (
+          <span key={m.model}>
+            {i > 0 ? "; " : ""}
+            {n(m.hardNegativeCategoryMeans[0], 3)} to {n(m.hardNegativeCategoryMeans[1], 3)} against{" "}
+            {n(m.paraphraseMean, 3)}
+          </span>
+        ))}
+        ), and the threshold that blocked every hard negative reused no paraphrase.
+      </p>
 
       <h2>Experiment 2: adding an LLM judge</h2>
       <p>
@@ -74,6 +96,16 @@ export function SemanticCacheEn() {
         errors in {n(PAIRS.hardNegatives)} hard negatives still allows a true error rate of about{" "}
         {pct(JUDGE_ON_PAIRS.ruleOfThreePct)} at 95% confidence. A clean result on a small set is a signal, not a
         guarantee.
+      </p>
+      <p>
+        I also asked each judge twice, with the two questions swapped. A judge that decides on meaning should not care
+        about the order. The 3B judge changed its answer on {n(JUDGE_ON_PAIRS.flippedByOrder.small)} of the{" "}
+        {n(PAIRS.total)} pairs, all paraphrases. The 7B judge changed on {n(JUDGE_ON_PAIRS.flippedByOrder.large)}, and
+        that pair was its one miss: requiring both orders to agree removed it, at twice the calls. The cost is easy to
+        state as a break-even. At this threshold the 7B judge only saved time when the answer it replaced took more
+        than about {n(JUDGE_ON_PAIRS.breakEvenSeconds.oneOrder[0], 1)} to{" "}
+        {n(JUDGE_ON_PAIRS.breakEvenSeconds.oneOrder[1], 1)} seconds to generate, or{" "}
+        {n(JUDGE_ON_PAIRS.breakEvenSeconds.bothOrders, 1)} seconds when asked in both orders.
       </p>
 
       <h2>Track A: real questions against a whole cache</h2>
@@ -159,6 +191,47 @@ export function SemanticCacheEn() {
         labeling by hand, and this article will be updated with the corrected figures.
       </p>
 
+      <h2>A model trained for the task did not help</h2>
+      <p>
+        The obvious objection to an LLM judge is that a model trained to decide whether two questions are equivalent
+        should do this better and far cheaper. I tested one: a cross-encoder trained on duplicate questions (
+        <code>{CROSS_ENCODER.model}</code>). On my hand-written pairs it was worse than any judge that worked: at a
+        score threshold of {n(CROSS_ENCODER.onPairs.threshold, 2)} it reused{" "}
+        {pct(CROSS_ENCODER.onPairs.paraphrasesReusedPct)} of paraphrases and still accepted{" "}
+        {pct(CROSS_ENCODER.onPairs.hardNegativesAcceptedPct)} of hard negatives. On the real questions, compared pair
+        by pair with the plain similarity threshold at the same share of related questions accepted, it reused fewer
+        rewrites:
+      </p>
+      <div className="article-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Policy</th>
+              <th>Related accepted</th>
+              <th>Rewrites reused</th>
+            </tr>
+          </thead>
+          <tbody>
+            {CROSS_ENCODER.matched.map((row) => (
+              <tr key={row.id}>
+                <td>
+                  {row.cosine ? "similarity threshold" : "cross-encoder"} {n(row.threshold, 2)}
+                </td>
+                <td>{pct(row.relatedAcceptedPct, 1)}</td>
+                <td>{pct(row.rewritesReusedPct, 1)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        It is cheap, about {n(CROSS_ENCODER.millisecondsPerPair)} milliseconds per pair on CPU, but it sits below the
+        threshold it was meant to improve on. This is one model, trained on general questions and used on medical ones,
+        so it does not show that no such model would work. It shows that &ldquo;use a model trained for
+        equivalence&rdquo; is not an automatic fix, and that it has to be measured on your own questions like
+        everything else here.
+      </p>
+
       <h2>What I would do when designing a semantic cache</h2>
       <ul className="article-list">
         <li>
@@ -195,13 +268,20 @@ export function SemanticCacheEn() {
       <p>
         One domain, one language, short questions, and small samples: 5 pairs per hard-negative category in Experiments
         1 and 2, and {n(TRACK_A.sampledPerKind)} + {n(TRACK_A.sampledPerKind)} queries in Track A. Labels are human
-        judgment, and each pair was judged in one order only. Judges ran on free CPU runners, so latency on a GPU would
-        be much lower and was not measured. Frontier models may judge better, at a much higher price per check.
+        judgment. Both orders were judged on the hand-written pairs only; Track A still judges one. Frontier models may
+        judge better, at a much higher price per check.
       </p>
       <p>
-        I also did not test the middle ground between an embedding and a generative judge: a cross-encoder trained for
-        question equivalence, or a bidirectional entailment check. They are cheaper than an LLM call and built for
-        exactly this decision. That is the next experiment, and this article will be updated with the result.
+        Judges ran on free CPU runners, and the latency there is not stable: the same 3B judge took{" "}
+        {n(JUDGE_ON_PAIRS.latencyBetweenRuns[0], 1)} seconds per call in one run and{" "}
+        {n(JUDGE_ON_PAIRS.latencyBetweenRuns[1], 1)} in the next. Read the latencies and break-even times as orders of
+        magnitude. Latency on a GPU would be much lower and was not measured. One verdict of that judge also changed
+        between those two runs, at temperature 0, which is a reminder that a result on a small set can move by a pair.
+      </p>
+      <p>
+        The cross-encoder was tested pair by pair, not against the whole cache, and only one was tested. A
+        cross-encoder trained on questions from the same domain, and a bidirectional entailment check, are still
+        untested.
       </p>
       <p>
         Code, data and raw results are on <a href={REPO}>GitHub</a>, and every number above comes from runs committed

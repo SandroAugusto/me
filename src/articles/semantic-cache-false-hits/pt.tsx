@@ -1,5 +1,15 @@
 import { formatter } from "@/lib/format";
-import { JUDGE_ON_PAIRS, PAIRS, PER_THOUSAND, REPO, THRESHOLD_ONLY, TRACK_A, WRONG_SHARE_AT_25 } from "./data";
+import {
+  CROSS_ENCODER,
+  JUDGE_ON_PAIRS,
+  OTHER_EMBEDDING_MODELS,
+  PAIRS,
+  PER_THOUSAND,
+  REPO,
+  THRESHOLD_ONLY,
+  TRACK_A,
+  WRONG_SHARE_AT_25,
+} from "./data";
 
 const { n, pct } = formatter("pt");
 
@@ -51,6 +61,19 @@ export function SemanticCachePt() {
         propriedade do que os embeddings capturam. Eles são bons em assunto e fracos nos pequenos detalhes que mudam
         uma resposta.
       </p>
+      <p>
+        Também não é uma propriedade de um modelo só. Repeti a varredura com o <code>mxbai-embed-large</code> e com o{" "}
+        <code>bge-m3</code>, multilíngue. Nos dois, todas as categorias de negativos difíceis tiveram média maior do que
+        a das paráfrases (
+        {OTHER_EMBEDDING_MODELS.map((m, i) => (
+          <span key={m.model}>
+            {i > 0 ? "; " : ""}
+            {n(m.hardNegativeCategoryMeans[0], 3)} a {n(m.hardNegativeCategoryMeans[1], 3)} contra{" "}
+            {n(m.paraphraseMean, 3)}
+          </span>
+        ))}
+        ), e o limiar que bloqueou todos os negativos difíceis não reaproveitou nenhuma paráfrase.
+      </p>
 
       <h2>Experimento 2: acrescentando um juiz LLM</h2>
       <p>
@@ -79,6 +102,17 @@ export function SemanticCachePt() {
         têm de ser reportados sempre juntos. Segundo, 0 erros em {n(PAIRS.hardNegatives)} negativos difíceis ainda é
         compatível com uma taxa de erro verdadeira de cerca de {pct(JUDGE_ON_PAIRS.ruleOfThreePct)}, com 95% de
         confiança. Um resultado limpo em um conjunto pequeno é um sinal, não uma garantia.
+      </p>
+      <p>
+        Também perguntei duas vezes a cada juiz, com as duas perguntas trocadas de lugar. Um juiz que decide pelo
+        significado não deveria se importar com a ordem. O juiz 3B mudou de resposta em{" "}
+        {n(JUDGE_ON_PAIRS.flippedByOrder.small)} dos {n(PAIRS.total)} pares, todos paráfrases. O juiz 7B mudou em{" "}
+        {n(JUDGE_ON_PAIRS.flippedByOrder.large)}, e esse par era o seu único erro: exigir que as duas ordens concordem
+        eliminou o erro, ao custo do dobro de chamadas. O custo fica fácil de expressar como ponto de equilíbrio. Com
+        esse limiar, o juiz 7B só economizou tempo quando a resposta que ele substituía levava mais de cerca de{" "}
+        {n(JUDGE_ON_PAIRS.breakEvenSeconds.oneOrder[0], 1)} a {n(JUDGE_ON_PAIRS.breakEvenSeconds.oneOrder[1], 1)}{" "}
+        segundos para ser gerada, ou {n(JUDGE_ON_PAIRS.breakEvenSeconds.bothOrders, 1)} segundos quando perguntado nas
+        duas ordens.
       </p>
 
       <h2>Track A: perguntas reais contra um cache inteiro</h2>
@@ -169,6 +203,47 @@ export function SemanticCachePt() {
         artigo será atualizado com os números corrigidos.
       </p>
 
+      <h2>Um modelo treinado para a tarefa não ajudou</h2>
+      <p>
+        A objeção óbvia a um juiz LLM é que um modelo treinado para decidir se duas perguntas são equivalentes deveria
+        fazer isso melhor e por muito menos. Testei um: um cross-encoder treinado com perguntas duplicadas (
+        <code>{CROSS_ENCODER.model}</code>). Nos meus pares escritos à mão ele foi pior do que qualquer juiz que
+        funcionou: com limiar de pontuação de {n(CROSS_ENCODER.onPairs.threshold, 2)}, reaproveitou{" "}
+        {pct(CROSS_ENCODER.onPairs.paraphrasesReusedPct)} das paráfrases e ainda aceitou{" "}
+        {pct(CROSS_ENCODER.onPairs.hardNegativesAcceptedPct)} dos negativos difíceis. Nas perguntas reais, comparado
+        par a par com o limiar de similaridade simples, na mesma proporção de perguntas relacionadas aceitas, ele
+        reaproveitou menos reescritas:
+      </p>
+      <div className="article-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Política</th>
+              <th>Relacionadas aceitas</th>
+              <th>Reescritas reaproveitadas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {CROSS_ENCODER.matched.map((row) => (
+              <tr key={row.id}>
+                <td>
+                  {row.cosine ? "limiar de similaridade" : "cross-encoder"} {n(row.threshold, 2)}
+                </td>
+                <td>{pct(row.relatedAcceptedPct, 1)}</td>
+                <td>{pct(row.rewritesReusedPct, 1)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Ele é barato, cerca de {n(CROSS_ENCODER.millisecondsPerPair)} milissegundos por par em CPU, mas fica abaixo do
+        limiar que deveria melhorar. É um modelo só, treinado com perguntas gerais e usado em perguntas médicas, então
+        isso não mostra que nenhum modelo desse tipo funcionaria. Mostra que &ldquo;use um modelo treinado para
+        equivalência&rdquo; não é uma correção automática, e que ele precisa ser medido nas suas próprias perguntas,
+        como todo o resto aqui.
+      </p>
+
       <h2>O que eu faria ao projetar um cache semântico</h2>
       <ul className="article-list">
         <li>
@@ -206,15 +281,20 @@ export function SemanticCachePt() {
       <p>
         Um domínio, um idioma, perguntas curtas e amostras pequenas: 5 pares por categoria de negativo difícil nos
         Experimentos 1 e 2, e {n(TRACK_A.sampledPerKind)} + {n(TRACK_A.sampledPerKind)} consultas no Track A. Os
-        rótulos são julgamento humano, e cada par foi julgado em uma ordem só. Os juízes rodaram em runners gratuitos
-        de CPU, então a latência em GPU seria muito menor e não foi medida. Modelos de fronteira talvez julguem melhor,
-        a um preço muito maior por verificação.
+        rótulos são julgamento humano. As duas ordens foram julgadas só nos pares escritos à mão; o Track A ainda julga
+        uma. Modelos de fronteira talvez julguem melhor, a um preço muito maior por verificação.
       </p>
       <p>
-        Também não testei o meio-termo entre um embedding e um juiz generativo: um cross-encoder treinado para
-        equivalência de perguntas, ou uma verificação de implicação bidirecional. São mais baratos do que uma chamada
-        de LLM e feitos exatamente para essa decisão. Esse é o próximo experimento, e este artigo será atualizado com o
-        resultado.
+        Os juízes rodaram em runners gratuitos de CPU, e a latência ali não é estável: o mesmo juiz 3B levou{" "}
+        {n(JUDGE_ON_PAIRS.latencyBetweenRuns[0], 1)} segundo por chamada em uma execução e{" "}
+        {n(JUDGE_ON_PAIRS.latencyBetweenRuns[1], 1)} na seguinte. Leia as latências e os pontos de equilíbrio como
+        ordens de grandeza. A latência em GPU seria muito menor e não foi medida. Um veredito desse juiz também mudou
+        entre essas duas execuções, com temperatura 0, o que lembra que um resultado em um conjunto pequeno pode variar
+        em um par.
+      </p>
+      <p>
+        O cross-encoder foi testado par a par, não contra o cache inteiro, e só um foi testado. Um cross-encoder
+        treinado com perguntas do mesmo domínio e uma verificação de implicação bidirecional continuam sem teste.
       </p>
       <p>
         Código, dados e resultados brutos estão no <a href={REPO}>GitHub</a> (em inglês), e todos os números acima vêm

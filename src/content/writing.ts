@@ -26,13 +26,13 @@ export const ARTICLES = {
         title: "Similar is not the same: measuring false hits in semantic caches",
         summary:
           "Tuning the similarity threshold could not make a semantic cache safe without giving up most of its savings, and an LLM judge that looked perfect on hand-written pairs was much weaker on real ones.",
-        meta: "LLM systems · Experiment · 8 min read",
+        meta: "LLM systems · Experiment · 10 min read",
       },
       pt: {
         title: "Parecido não é igual: medindo falsos acertos em caches semânticos",
         summary:
           "Ajustar o limiar de similaridade não tornou o cache semântico seguro sem abrir mão da maior parte da economia, e um juiz LLM que parecia perfeito em pares escritos à mão foi bem mais fraco em perguntas reais.",
-        meta: "Sistemas com LLM · Experimento · 8 min de leitura",
+        meta: "Sistemas com LLM · Experimento · 10 min de leitura",
       },
     },
   },
