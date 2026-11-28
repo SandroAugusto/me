@@ -3,6 +3,7 @@ import { content } from "@/content";
 import { ARTICLES, articlePaths, type ArticleSlug } from "@/content/writing";
 import { PATHS, SITE, type Locale } from "@/lib/site";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { Logo } from "./Logo";
 
 /** Header, title block and footer of an article, in the page's language. */
 export function ArticleShell({ slug, locale, children }: { slug: ArticleSlug; locale: Locale; children: ReactNode }) {
@@ -12,7 +13,8 @@ export function ArticleShell({ slug, locale, children }: { slug: ArticleSlug; lo
     <>
       <header className="site-header">
         <div className="wrap bar">
-          <a className="brand" href={PATHS[locale]}>
+          <a className="brand" href={PATHS[locale]} aria-label={SITE.person}>
+            <Logo />
             {SITE.person}
           </a>
           <div className="bar-right">
