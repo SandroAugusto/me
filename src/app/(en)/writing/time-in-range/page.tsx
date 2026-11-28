@@ -231,6 +231,21 @@ export default function TimeInRangeArticle() {
         attach no uncertainty to differences that small.
       </p>
 
+      <h2>Fourth result: measured quantiles forecast better than the model&rsquo;s</h2>
+      <p>
+        If the formula&rsquo;s distribution cannot be trusted, what can be used instead? I split the two years in time,
+        measured on one side how long ranges lasted as a multiple of E[T], and used those quantiles to forecast the
+        other side, in both directions. The model&rsquo;s own quantiles were miscalibrated out of sample: at &plusmn;1%,
+        only 35 to 36% of positions had exited by the model&rsquo;s median, and 75 to 77% by its 90th percentile.
+        Quantiles measured on the other side of the split came within five percentage points of the 10%, 50% and 90%
+        targets at &plusmn;1% to &plusmn;4%. At &plusmn;8% the 90th percentile missed in both directions.
+      </p>
+      <p>
+        The practical version: keep E[T] as the unit, and read the multiple off past data instead of off the
+        model&rsquo;s distribution. That is one pair over two years, split in two, for positions opened at the centre
+        of their range, and it says nothing about fees.
+      </p>
+
       <h2>What I would not conclude from this</h2>
       <ul className="article-list">
         <li>
@@ -239,7 +254,11 @@ export default function TimeInRangeArticle() {
         </li>
         <li>
           This is one pair, on one exchange. A pool&rsquo;s own price can differ from an exchange&rsquo;s, most of all
-          over minutes.
+          over minutes. The project now compares the two on its own hourly snapshots of the public pools. At the first
+          reading, the deepest pool was 13.7 basis points above the exchange price, part of that from the lag of up to
+          a minute between the two, while thin pools of the same pair sat up to 198 basis points away. One reading
+          says nothing about how that difference moves between observations, which is what would change exit times;
+          that takes weeks of snapshots.
         </li>
         <li>
           Results depend on the period: at &plusmn;8% the corrected median was 0.71 over two years and 0.59 over the
@@ -248,8 +267,10 @@ export default function TimeInRangeArticle() {
         </li>
         <li>
           Fees are not part of this. Whether fees in range scale with &sigma; / h, which is what would make the width
-          cancel out of the economics, needs pool volume and liquidity by price level over time. I have not yet checked a free,
-          reproducible source for that, so that half of the model is still unvalidated.
+          cancel out of the economics, is still unvalidated. I first assumed that checking it needed liquidity by price
+          level over time. It does not: the fees of a position centred in its range follow from the pool&rsquo;s
+          cumulative fee growth alone. The project has taken hourly snapshots of the public pools since 27 November
+          2026, and that study waits for enough data.
         </li>
       </ul>
 

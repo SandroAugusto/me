@@ -22,7 +22,7 @@ export const ARTICLES = {
     title: "How long does a liquidity range last? Testing the textbook formula on public prices",
     summary:
       "The standard formula for how long a price stays in a range was wrong in a way that depended on the range's width. A large part of the error came from how I was measuring, and the model's own world does not reproduce the rest.",
-    meta: "Quantitative modelling · Experiment · 8 min read",
+    meta: "Quantitative modelling · Experiment · 9 min read",
   },
 } satisfies Record<string, Article>;
 

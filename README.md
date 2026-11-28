@@ -14,13 +14,16 @@ Personal site of Sandro Augusto, at [sandroaugusto.dev](https://sandroaugusto.de
 src/
   app/
     (en)/            English root layout and page, served at /
+      writing/       one folder per article, served at /writing/<slug>/
     (pt)/            Portuguese root layout and page, served at /pt/
-    sitemap.ts       sitemap.xml, generated from the list of locales
+    sitemap.ts       sitemap.xml, generated from the locales and the articles
     robots.ts        robots.txt
-  components/        Site (all sections), RootShell, LanguageSwitch
-  content/           typed content: types.ts, en.ts, pt.ts
+  components/        Site (all sections), ArticleShell, RootShell, LanguageSwitch
+  content/           typed content: types.ts, en.ts, pt.ts, writing.ts
   lib/               site constants and the metadata builder
 ```
+
+Articles are in English only. Each one is a page under `src/app/(en)/writing/`, and `src/content/writing.ts` lists them for the home page and the sitemap. Every figure in an article comes from the repository it links to, so an article is updated when that repository's results change.
 
 Each language has its own root layout so that `<html lang>` is correct in the exported HTML. Both layouts render the same `Site` component with a different locale.
 
