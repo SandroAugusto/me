@@ -6,7 +6,7 @@ Personal site of Sandro Augusto, at [sandroaugusto.dev](https://sandroaugusto.de
 
 - Next.js (App Router) with React and TypeScript in strict mode
 - Static export (`output: "export"`): the build produces plain files in `out/`, with no server at runtime
-- Plain CSS with custom properties, and no client-side JavaScript beyond the language switch
+- Plain CSS with custom properties. The only client-side JavaScript is the language switch and the mobile menu, which is a native `<details>` element that also works without it
 
 ## How it is organised
 
@@ -20,7 +20,7 @@ src/
     sitemap.ts       sitemap.xml, generated from the locales and the articles
     robots.ts        robots.txt
   articles/<slug>/   an article: en.tsx, pt.tsx and the figures both quote, data.ts
-  components/        Site (all sections), ArticleShell, RootShell, LanguageSwitch
+  components/        Site (all sections), ArticleShell, RootShell, LanguageSwitch, MobileMenu, Logo
   content/           typed content: types.ts, en.ts, pt.ts, writing.ts
   lib/               site constants, metadata builders, number formatting
 ```

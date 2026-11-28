@@ -6,7 +6,7 @@ export const pt: Content = {
     description:
       "Tech lead e engenheiro de software sênior com mais de 10 anos em TypeScript, Node.js, React e sistemas de autenticação, atuando com empresas como Pinterest, Ask Media Group e XP Inc.",
   },
-  nav: { experience: "Experiência", writing: "Textos", skills: "Competências", education: "Formação", contact: "Contato" },
+  nav: { menu: "Menu", experience: "Experiência", writing: "Textos", skills: "Competências", education: "Formação", contact: "Contato" },
   hero: {
     eyebrow: "Tech Lead · Engenheiro de Software Sênior",
     title: "Lidero times de engenharia e construo plataformas web que operam em escala.",
