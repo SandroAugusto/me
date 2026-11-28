@@ -33,7 +33,7 @@ export interface Content {
   stats: Stat[];
   experience: { heading: string; roles: Role[] };
   skills: { heading: string; groups: SkillGroup[] };
-  writing: { heading: string; note?: string };
+  writing: { heading: string };
   education: { heading: string; degrees: Degree[] };
   contact: { heading: string; text: string; linkedin: string; github: string };
   footer: { source: string };

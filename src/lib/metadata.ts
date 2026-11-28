@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { content } from "@/content";
 import { PATHS, SITE, type Locale } from "./site";
 
-const OG_LOCALE: Record<Locale, string> = { en: "en_US", pt: "pt_BR" };
+export const OG_LOCALE: Record<Locale, string> = { en: "en_US", pt: "pt_BR" };
 
 export function buildMetadata(locale: Locale): Metadata {
   const { meta } = content[locale];

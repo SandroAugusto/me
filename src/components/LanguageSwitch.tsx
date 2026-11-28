@@ -10,13 +10,25 @@ function remember(locale: Locale) {
   }
 }
 
-export function LanguageSwitch({ current, label }: { current: Locale; label: string }) {
+/**
+ * Links to the same page in each language. `paths` defaults to the home pages;
+ * an article passes its own path in each language.
+ */
+export function LanguageSwitch({
+  current,
+  label,
+  paths = PATHS,
+}: {
+  current: Locale;
+  label: string;
+  paths?: Record<Locale, string>;
+}) {
   return (
     <div className="langs" role="group" aria-label={label}>
       {LOCALES.map((locale) => (
         <a
           key={locale}
-          href={PATHS[locale]}
+          href={paths[locale]}
           hrefLang={locale}
           aria-current={locale === current ? "true" : undefined}
           onClick={() => remember(locale)}
