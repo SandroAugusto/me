@@ -4,6 +4,7 @@ import { SITE, type Locale } from "@/lib/site";
 import { ARTICLES, ARTICLE_SLUGS, articlePath } from "@/content/writing";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { Logo } from "./Logo";
+import { MobileMenu } from "./MobileMenu";
 
 function RoleItem({ role }: { role: Role }) {
   return (
@@ -48,6 +49,14 @@ export function Site({ locale }: { locale: Locale }) {
     knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "Python", "Software architecture"],
   };
 
+  const sections = [
+    { href: "#experience", label: c.nav.experience },
+    { href: "#writing", label: c.nav.writing },
+    { href: "#skills", label: c.nav.skills },
+    { href: "#education", label: c.nav.education },
+    { href: "#contact", label: c.nav.contact },
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -56,17 +65,18 @@ export function Site({ locale }: { locale: Locale }) {
         <div className="wrap bar">
           <a className="brand" href="#top" aria-label={SITE.person}>
             <Logo />
-            {SITE.person}
+            <span className="brand-name">{SITE.person}</span>
           </a>
           <div className="bar-right">
             <nav>
-              <a href="#experience">{c.nav.experience}</a>
-              <a href="#writing">{c.nav.writing}</a>
-              <a href="#skills">{c.nav.skills}</a>
-              <a href="#education">{c.nav.education}</a>
-              <a href="#contact">{c.nav.contact}</a>
+              {sections.map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
             </nav>
             <LanguageSwitch current={locale} label={c.languageSwitch.label} />
+            <MobileMenu label={c.nav.menu} links={sections} />
           </div>
         </div>
       </header>
