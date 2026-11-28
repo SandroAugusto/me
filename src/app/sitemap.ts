@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { LOCALES, PATHS, SITE } from "@/lib/site";
-import { ARTICLE_LIST } from "@/content/writing";
+import { HTML_LANG, LOCALES, PATHS, SITE } from "@/lib/site";
+import { ARTICLE_SLUGS, articlePath } from "@/content/writing";
 
 export const dynamic = "force-static";
 
@@ -11,6 +11,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     alternates: { languages },
   }));
-  const articles = ARTICLE_LIST.map((article) => ({ url: SITE.url + article.path, lastModified: new Date() }));
+  const articles = ARTICLE_SLUGS.flatMap((slug) => {
+    const alternates = {
+      languages: Object.fromEntries(LOCALES.map((l) => [HTML_LANG[l], SITE.url + articlePath(slug, l)])),
+    };
+    return LOCALES.map((locale) => ({
+      url: SITE.url + articlePath(slug, locale),
+      lastModified: new Date(),
+      alternates,
+    }));
+  });
   return [...pages, ...articles];
 }

@@ -1,23 +1,32 @@
 import type { ReactNode } from "react";
-import { SITE } from "@/lib/site";
+import { content } from "@/content";
+import { ARTICLES, articlePaths, type ArticleSlug } from "@/content/writing";
+import { PATHS, SITE, type Locale } from "@/lib/site";
+import { LanguageSwitch } from "./LanguageSwitch";
 
-export function ArticleShell({ title, meta, children }: { title: string; meta: string; children: ReactNode }) {
+/** Header, title block and footer of an article, in the page's language. */
+export function ArticleShell({ slug, locale, children }: { slug: ArticleSlug; locale: Locale; children: ReactNode }) {
+  const c = content[locale];
+  const text = ARTICLES[slug].text[locale];
   return (
     <>
       <header className="site-header">
         <div className="wrap bar">
-          <a className="brand" href="/">
+          <a className="brand" href={PATHS[locale]}>
             {SITE.person}
           </a>
-          <a className="article-back" href="/#writing">
-            ← Writing
-          </a>
+          <div className="bar-right">
+            <a className="article-back" href={`${PATHS[locale]}#writing`}>
+              ← {c.nav.writing}
+            </a>
+            <LanguageSwitch current={locale} label={c.languageSwitch.label} paths={articlePaths(slug)} />
+          </div>
         </div>
       </header>
       <main className="article wrap">
         <article>
-          <p className="eyebrow mono">{meta}</p>
-          <h1 className="article-title">{title}</h1>
+          <p className="eyebrow mono">{text.meta}</p>
+          <h1 className="article-title">{text.title}</h1>
           <p className="article-byline">{SITE.person}</p>
           <div className="article-body">{children}</div>
         </article>
@@ -28,7 +37,7 @@ export function ArticleShell({ title, meta, children }: { title: string; meta: s
             © {new Date().getFullYear()} {SITE.person} · {SITE.legalName}
           </span>
           <a href={SITE.repo} target="_blank" rel="noopener noreferrer">
-            Source code
+            {c.footer.source}
           </a>
         </div>
       </footer>

@@ -136,7 +136,7 @@ export const pt: Content = {
       { title: "Liderança", items: ["Direção técnica", "Decisões de arquitetura", "Code review", "Contratação", "Mentoria"] },
     ],
   },
-  writing: { heading: "Textos selecionados", note: "Em inglês." },
+  writing: { heading: "Textos selecionados" },
   education: {
     heading: "Formação",
     degrees: [
