@@ -6,7 +6,7 @@ import { useRef } from "react";
  * The section links on narrow screens, where the header has no room for them.
  * A native <details> disclosure, so it opens without JavaScript; the script
  * only closes it again after a link is followed or Escape is pressed.
- * Hidden from 760px up, where the links sit in the header itself.
+ * Hidden from 900px up, where the links sit in the header itself.
  */
 export function MobileMenu({ label, links }: { label: string; links: { href: string; label: string }[] }) {
   const details = useRef<HTMLDetailsElement>(null);

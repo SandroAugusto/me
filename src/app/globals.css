@@ -496,7 +496,13 @@ h3 {
   gap: 8px 24px;
 }
 
-@media (min-width: 760px) {
+/*
+ * The section links move into the header only where the whole row fits: logo,
+ * name on one line, five links and the language switch. The Portuguese labels
+ * are the longest and need about 840px, so the switch is at 900px, not at the
+ * 760px layout breakpoint below. Under it, the links are in the menu.
+ */
+@media (min-width: 900px) {
   .site-header nav {
     display: flex;
   }
@@ -504,6 +510,9 @@ h3 {
   .menu {
     display: none;
   }
+}
+
+@media (min-width: 760px) {
 
   .hero {
     padding: 104px 0 88px;
@@ -531,7 +540,11 @@ h3 {
   /* Keep the header on one line: tighter spacing, and the article's back link as an arrow. */
   .bar,
   .bar-right {
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .langs a {
+    min-width: 40px;
   }
 
   .brand {
